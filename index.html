@@ -20,18 +20,28 @@
             width: 500px;
             height: 500px;
         }
-        .khmer-letter {
+        .khmer-letter-container {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .khmer-letter {
             font-size: 180px;
-            color: #0C1844; 
-            animation: float 3s ease-in-out infinite;
+            color: #0C1844;
         }
         .option {
             position: absolute;
-            padding: 15px 30px;
+            width: 120px; 
+            height: 120px;
+            padding: 10px;
             background-color: #FF6969;
             color: #FFF5E1;
             border: none;
@@ -39,14 +49,17 @@
             cursor: pointer;
             transition: background-color 0.3s;
             font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .option:hover {
             background-color: #C80036;
         }
-        .option:nth-child(2) { top: 20px; left: 20px; animation: float1 4s ease-in-out infinite; }
-        .option:nth-child(3) { top: 20px; right: 20px; animation: float2 3.5s ease-in-out infinite; }
-        .option:nth-child(4) { bottom: 20px; left: 20px; animation: float3 4.5s ease-in-out infinite; }
-        .option:nth-child(5) { bottom: 20px; right: 20px; animation: float4 3.8s ease-in-out infinite; }
+        .option:nth-child(2) { top: 20px; left: 20px; }
+        .option:nth-child(3) { top: 20px; right: 20px; }
+        .option:nth-child(4) { bottom: 20px; left: 20px; }
+        .option:nth-child(5) { bottom: 20px; right: 20px; }
         .result {
             position: absolute;
             top: 80%;
@@ -106,7 +119,9 @@
 <body>
     <div class="tracker" id="tracker">Correct: 0 Incorrect: 0 Remaining: 0</div>
     <div class="container">
-        <div class="khmer-letter" id="khmerLetter"></div>
+        <div class="khmer-letter-container">
+            <div class="khmer-letter" id="khmerLetter"></div>
+        </div>
         <button class="option" onclick="checkAnswer(this)"></button>
         <button class="option" onclick="checkAnswer(this)"></button>
         <button class="option" onclick="checkAnswer(this)"></button>
@@ -182,10 +197,12 @@
             
             if (button.textContent === currentConsonant.phonetic) {
                 resultElement.innerHTML = '✓';
-                correct++;  // Increment correct count
+                correct++;
+                button.classList.add('correct');  // Add 'correct' class to the clicked button
+                playPronunciation(currentConsonant);
             } else {
                 resultElement.innerHTML = '✗';
-                incorrect++;  // Increment incorrect count
+                incorrect++;
                 // Highlight the correct answer
                 buttons.forEach(btn => {
                     if (btn.textContent === currentConsonant.phonetic) {
@@ -194,11 +211,18 @@
                 });
             }
             resultElement.style.display = 'block';
-            updateTracker();  // Update the tracker after each answer
+            updateTracker();
+            
+            // Disable all buttons after an answer is selected
+            buttons.forEach(btn => btn.disabled = true);
+
             setTimeout(() => {
                 resultElement.style.display = 'none';
                 // Remove the 'correct' class from all buttons
-                buttons.forEach(btn => btn.classList.remove('correct'));
+                buttons.forEach(btn => {
+                    btn.classList.remove('correct');
+                    btn.disabled = false;  // Re-enable buttons for the next round
+                });
                 newRound();
             }, 1500);
         }
