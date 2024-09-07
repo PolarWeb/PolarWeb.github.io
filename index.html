@@ -39,7 +39,7 @@
         }
         .option {
             position: absolute;
-            width: 120px; 
+            width: 120px;
             height: 120px;
             padding: 10px;
             background-color: #FF6969;
@@ -48,7 +48,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
-            font-size: 24px;
+            font-size: 28px;  // Increased from 24px to 28px
             display: flex;
             justify-content: center;
             align-items: center;
@@ -56,10 +56,10 @@
         .option:hover {
             background-color: #C80036;
         }
-        .option:nth-child(2) { top: 20px; left: 20px; }
-        .option:nth-child(3) { top: 20px; right: 20px; }
-        .option:nth-child(4) { bottom: 20px; left: 20px; }
-        .option:nth-child(5) { bottom: 20px; right: 20px; }
+        .option:nth-child(2) { top: -55px; left: 20px; }
+        .option:nth-child(3) { top: -55px; right: 20px; }
+        .option:nth-child(4) { bottom: -55px; left: 20px; }
+        .option:nth-child(5) { bottom: -55px; right: 20px; }
         .result {
             position: absolute;
             top: 80%;
@@ -186,6 +186,7 @@
             // Set button text
             document.querySelectorAll('.option').forEach((button, index) => {
                 button.textContent = options[index];
+                button.disabled = false;  // Ensure buttons are enabled
             });
 
             updateTracker();
