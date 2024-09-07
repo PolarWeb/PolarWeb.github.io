@@ -130,6 +130,43 @@
         .group-selection label {
             margin-right: 10px;
         }
+        .group-info {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            background-color: #FF6969;
+            color: #FFF5E1;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            max-width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+        .popup-content {
+            margin-bottom: 20px;
+        }
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
         .start-button, .reset-button {
             margin-top: 20px;
             padding: 10px 20px;
@@ -171,11 +208,25 @@
         <h2>Select Groups</h2>
         <div>
             <label><input type="checkbox" value="1"> Group 1</label>
+            <span class="group-info" onclick="showGroupInfo(1)">?</span>
+        </div>
+        <div>
             <label><input type="checkbox" value="2"> Group 2</label>
+            <span class="group-info" onclick="showGroupInfo(2)">?</span>
+        </div>
+        <div>
             <label><input type="checkbox" value="3"> Group 3</label>
+            <span class="group-info" onclick="showGroupInfo(3)">?</span>
+        </div>
+        <div>
             <label><input type="checkbox" value="4"> Group 4</label>
+            <span class="group-info" onclick="showGroupInfo(4)">?</span>
         </div>
         <button class="start-button" onclick="startGame()">Start Game</button>
+    </div>
+    <div id="popup" class="popup">
+        <span class="close-popup" onclick="closePopup()">&times;</span>
+        <div id="popupContent" class="popup-content"></div>
     </div>
     <div class="container hidden" id="gameContainer">
         <div class="khmer-letter-container">
@@ -318,6 +369,25 @@
 
             isWaitingForNextRound = false;
             newRound();
+        }
+
+        function showGroupInfo(group) {
+            const popup = document.getElementById('popup');
+            const popupContent = document.getElementById('popupContent');
+            const groupConsonants = consonants.filter(c => c.group.toString() === group.toString());
+            
+            let content = `<h3>Group ${group} Consonants</h3><ul>`;
+            groupConsonants.forEach(consonant => {
+                content += `<li>${consonant.khmer} - ${consonant.phonetic}</li>`;
+            });
+            content += '</ul>';
+            
+            popupContent.innerHTML = content;
+            popup.style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
         }
     </script>
 </body>
