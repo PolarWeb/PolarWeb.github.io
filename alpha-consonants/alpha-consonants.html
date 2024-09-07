@@ -52,6 +52,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
         .option:hover {
             background-color: #C80036;
@@ -123,24 +124,43 @@
             transform: translate(-50%, -50%);
             text-align: center;
             background-color: white;
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            font-size: 18px;
+            width: 90%; /* Increased width */
+            max-width: 400px; /* Added max-width for larger screens */
+        }
+        .group-selection h2 {
+            margin-bottom: 20px;
+        }
+        .group-selection div {
+            margin-bottom: 15px; /* Increased vertical spacing */
         }
         .group-selection label {
-            margin-right: 10px;
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        .group-selection input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            vertical-align: middle;
         }
         .group-info {
             display: inline-block;
-            width: 20px;
-            height: 20px;
-            line-height: 20px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
             text-align: center;
             background-color: #FF6969;
             color: #FFF5E1;
             border-radius: 50%;
             cursor: pointer;
-            margin-left: 5px;
+            margin-left: 10px;
+            font-size: 20px;
+            vertical-align: middle;
         }
         .popup {
             display: none;
@@ -149,23 +169,43 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: white;
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.2);
             z-index: 1000;
             max-width: 80%;
             max-height: 80%;
             overflow-y: auto;
+            font-size: 18px;
         }
         .popup-content {
             margin-bottom: 20px;
+        }
+        .popup-content h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .popup-content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .popup-content li {
+            margin-bottom: 10px;
         }
         .close-popup {
             position: absolute;
             top: 10px;
             right: 10px;
             cursor: pointer;
+            font-size: 30px;
+            color: #FF6969;
+        }
+        .start-button {
+            margin-top: 30px;
+            padding: 15px 30px;
             font-size: 20px;
+            width: 100%; /* Make button full width */
+            max-width: 200px; /* Limit button width on larger screens */
         }
         .start-button, .reset-button {
             margin-top: 20px;
@@ -194,15 +234,54 @@
                 background-color: #FF6969;
             }
         }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: rgba(255, 245, 225, 0.9);
+            z-index: 100;
+        }
+        .reset-button, .back-button {
+            padding: 10px 20px;
+            background-color: #FF6969;
+            color: #FFF5E1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        .reset-button:hover, .back-button:hover {
+            background-color: #C80036;
+        }
+        .tracker {
+            font-size: 24px;
+            color: #0C1844; 
+            font-weight: bold;
+            display: flex;
+            gap: 20px;
+        }
+        .option {
+            /* ... (existing styles) ... */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
-    <a href="../index.html" class="back-button">Back</a>
-    <button class="reset-button hidden" onclick="resetGame()">Reset</button>
-    <div class="tracker" id="tracker">
-        <span class="correct">0</span>
-        <span class="incorrect">0</span>
-        <span class="remaining">0</span>
+    <div class="top-bar">
+        <button class="reset-button" onclick="resetGame()">Reset</button>
+        <div class="tracker" id="tracker">
+            <span class="correct">0</span>
+            <span class="incorrect">0</span>
+            <span class="remaining">0</span>
+        </div>
+        <a href="../index.html" class="back-button">Back</a>
     </div>
     <div class="group-selection" id="groupSelection">
         <h2>Select Groups</h2>
@@ -378,7 +457,7 @@
             
             let content = `<h3>Group ${group} Consonants</h3><ul>`;
             groupConsonants.forEach(consonant => {
-                content += `<li>${consonant.khmer} - ${consonant.phonetic}</li>`;
+                content += `<li><strong>${consonant.khmer}</strong> - ${consonant.phonetic}</li>`;
             });
             content += '</ul>';
             
