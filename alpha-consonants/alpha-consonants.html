@@ -116,6 +116,42 @@
         .back-button:hover {
             background-color: #C80036;
         }
+        .group-selection {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .group-selection label {
+            margin-right: 10px;
+        }
+        .start-button, .reset-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #FF6969;
+            color: #FFF5E1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .start-button:hover, .reset-button:hover {
+            background-color: #C80036;
+        }
+        .reset-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .hidden {
+            display: none;
+        }
         @media (hover: none) {
             .option:hover {
                 background-color: #FF6969;
@@ -125,12 +161,23 @@
 </head>
 <body>
     <a href="../index.html" class="back-button">Back</a>
+    <button class="reset-button hidden" onclick="resetGame()">Reset</button>
     <div class="tracker" id="tracker">
         <span class="correct">0</span>
         <span class="incorrect">0</span>
         <span class="remaining">0</span>
     </div>
-    <div class="container">
+    <div class="group-selection" id="groupSelection">
+        <h2>Select Groups</h2>
+        <div>
+            <label><input type="checkbox" value="1"> Group 1</label>
+            <label><input type="checkbox" value="2"> Group 2</label>
+            <label><input type="checkbox" value="3"> Group 3</label>
+            <label><input type="checkbox" value="4"> Group 4</label>
+        </div>
+        <button class="start-button" onclick="startGame()">Start Game</button>
+    </div>
+    <div class="container hidden" id="gameContainer">
         <div class="khmer-letter-container">
             <div class="khmer-letter" id="khmerLetter"></div>
         </div>
@@ -143,6 +190,7 @@
 
     <script>
         let consonants = [];
+        let selectedConsonants = [];
         let currentConsonant;
         let correct = 0;
         let incorrect = 0;
@@ -150,18 +198,40 @@
         let isWaitingForNextRound = false;
 
         // Load JSON data
-        fetch('./khmer-consonant-list.JSON')  // Use a relative path
+        fetch('./khmer-consonant-list.JSON')
             .then(response => response.json())
             .then(data => {
                 consonants = data;
-                remaining = consonants.length;
-                updateTracker();
-                newRound();
             })
             .catch(error => {
                 console.error('Error loading JSON:', error);
                 alert('Failed to load consonant data. Please try refreshing the page.');
             });
+
+        function startGame() {
+            const selectedGroups = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
+            if (selectedGroups.length === 0) {
+                alert("Please select at least one group.");
+                return;
+            }
+            selectedConsonants = consonants.filter(c => selectedGroups.includes(c.group.toString()));
+            remaining = selectedConsonants.length;
+            document.getElementById('groupSelection').classList.add('hidden');
+            document.getElementById('gameContainer').classList.remove('hidden');
+            document.querySelector('.reset-button').classList.remove('hidden');
+            updateTracker();
+            newRound();
+        }
+
+        function resetGame() {
+            document.getElementById('groupSelection').classList.remove('hidden');
+            document.getElementById('gameContainer').classList.add('hidden');
+            document.querySelector('.reset-button').classList.add('hidden');
+            correct = 0;
+            incorrect = 0;
+            remaining = 0;
+            updateTracker();
+        }
 
         function updateTracker() {
             const trackerElement = document.getElementById('tracker');
@@ -175,38 +245,39 @@
         function newRound() {
             if (remaining === 0) {
                 alert("Game Over! You've seen all the consonants.");
+                resetGame();
                 return;
             }
 
-            const index = Math.floor(Math.random() * consonants.length);
-            currentConsonant = consonants[index];
-            consonants.splice(index, 1);
+            const index = Math.floor(Math.random() * selectedConsonants.length);
+            currentConsonant = selectedConsonants[index];
+            selectedConsonants.splice(index, 1);
             remaining--;
 
             document.getElementById('khmerLetter').textContent = currentConsonant.khmer;
 
             const options = [currentConsonant.phonetic];
             while (options.length < 4) {
-                const randomPhonetic = consonants[Math.floor(Math.random() * consonants.length)].phonetic;
-                if (!options.includes(randomPhonetic)) {
-                    options.push(randomPhonetic);
+                const randomConsonant = consonants[Math.floor(Math.random() * consonants.length)];
+                if (!options.includes(randomConsonant.phonetic)) {
+                    options.push(randomConsonant.phonetic);
                 }
             }
 
-            // Shuffle options
             options.sort(() => Math.random() - 0.5);
 
-            // Set button text
             const buttons = document.querySelectorAll('.option');
             buttons.forEach((button, index) => {
                 button.textContent = options[index];
+                button.disabled = false;
+                button.classList.remove('correct');
             });
 
             updateTracker();
         }
 
         function checkAnswer(button) {
-            if (isWaitingForNextRound) return; // Prevent multiple clicks while waiting
+            if (isWaitingForNextRound) return;
 
             const resultElement = document.getElementById('result');
             const buttons = document.querySelectorAll('.option');
@@ -217,11 +288,9 @@
                 resultElement.innerHTML = '✓';
                 correct++;
                 button.classList.add('correct');
-                playPronunciation(currentConsonant);
             } else {
                 resultElement.innerHTML = '✗';
                 incorrect++;
-                // Highlight the correct answer
                 buttons.forEach(btn => {
                     if (btn.textContent === currentConsonant.phonetic) {
                         btn.classList.add('correct');
@@ -231,7 +300,6 @@
             resultElement.style.display = 'block';
             updateTracker();
             
-            // Disable all buttons after an answer is selected
             buttons.forEach(btn => btn.disabled = true);
 
             setTimeout(prepareNextRound, 1500);
@@ -250,11 +318,6 @@
 
             isWaitingForNextRound = false;
             newRound();
-        }
-
-        function playPronunciation(consonant) {
-            // This function is not defined in the provided code, so I'll leave it as is.
-            // You might need to implement this function or adjust it according to your needs.
         }
     </script>
 </body>

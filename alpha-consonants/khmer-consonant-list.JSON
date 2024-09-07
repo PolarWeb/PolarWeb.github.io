@@ -1,233 +1,291 @@
 [
   {
+    "group": "1",
     "khmer": "ក",
     "phonetic": "ka"
   },
   {
+    "group": "1",
     "khmer": "ខ",
     "phonetic": "kha"
   },
   {
+    "group": "2",
     "khmer": "គ",
     "phonetic": "ko"
   },
   {
+    "group": "2",
     "khmer": "ឃ",
     "phonetic": "kho"
   },
   {
+    "group": "2",
     "khmer": "ង",
     "phonetic": "ngo"
   },
   {
+    "group": "1",
     "khmer": "ច",
     "phonetic": "cha"
   },
   {
+    "group": "1",
     "khmer": "ឆ",
     "phonetic": "chha"
   },
   {
+    "group": "2",
     "khmer": "ជ",
     "phonetic": "cho"
   },
   {
+    "group": "2",
     "khmer": "ឈ",
     "phonetic": "chho"
   },
   {
+    "group": "2",
     "khmer": "ញ",
     "phonetic": "nho"
   },
   {
+    "group": "1",
     "khmer": "ដ",
     "phonetic": "da"
   },
   {
+    "group": "1",
     "khmer": "ឋ",
     "phonetic": "tha"
   },
   {
+    "group": "2",
     "khmer": "ឌ",
     "phonetic": "do"
   },
   {
+    "group": "2",
     "khmer": "ឍ",
     "phonetic": "tho"
   },
   {
+    "group": "1",
     "khmer": "ណ",
     "phonetic": "na"
   },
   {
+    "group": "1",
     "khmer": "ត",
     "phonetic": "ta"
   },
   {
+    "group": "1",
     "khmer": "ថ",
     "phonetic": "tha"
   },
   {
+    "group": "2",
     "khmer": "ទ",
     "phonetic": "to"
   },
   {
+    "group": "2",
     "khmer": "ធ",
     "phonetic": "tho"
   },
   {
+    "group": "2",
     "khmer": "ន",
     "phonetic": "no"
   },
   {
+    "group": "1",
     "khmer": "ប",
     "phonetic": "ba"
   },
   {
+    "group": "1",
     "khmer": "ផ",
     "phonetic": "pha"
   },
   {
+    "group": "2",
     "khmer": "ព",
     "phonetic": "po"
   },
   {
+    "group": "2",
     "khmer": "ភ",
     "phonetic": "pho"
   },
   {
+    "group": "2",
     "khmer": "ម",
     "phonetic": "mo"
   },
   {
+    "group": "2",
     "khmer": "យ",
     "phonetic": "yo"
   },
   {
+    "group": "2",
     "khmer": "រ",
     "phonetic": "ro"
   },
   {
+    "group": "2",
     "khmer": "ល",
     "phonetic": "lo"
   },
   {
+    "group": "2",
     "khmer": "វ",
     "phonetic": "vo"
   },
   {
+    "group": "3",
     "khmer": "្ក",
     "phonetic": "ka"
   },
   {
+    "group": "3",
     "khmer": "្ខ",
     "phonetic": "kha"
   },
   {
+    "group": "4",
     "khmer": "្គ",
     "phonetic": "ko"
   },
   {
+    "group": "4",
     "khmer": "្ឃ",
     "phonetic": "kho"
   },
   {
+    "group": "4",
     "khmer": "្ង",
     "phonetic": "ngo"
   },
   {
+    "group": "3",
     "khmer": "្ច",
     "phonetic": "cha"
   },
   {
+    "group": "3",
     "khmer": "្ឆ",
     "phonetic": "chha"
   },
   {
+    "group": "4",
     "khmer": "្ជ",
     "phonetic": "cho"
   },
   {
+    "group": "4",
     "khmer": "្ឈ",
     "phonetic": "chho"
   },
   {
+    "group": "4",
     "khmer": "្ញ",
     "phonetic": "nho"
   },
   {
+    "group": "3",
     "khmer": "្ដ",
     "phonetic": "da"
   },
   {
+    "group": "3",
     "khmer": "្ឋ",
     "phonetic": "tha"
   },
   {
+    "group": "4",
     "khmer": "្ឌ",
     "phonetic": "do"
   },
   {
+    "group": "4",
     "khmer": "្ឍ",
     "phonetic": "tho"
   },
   {
+    "group": "3",
     "khmer": "្ណ",
     "phonetic": "na"
   },
   {
+    "group": "3",
     "khmer": "្ត",
     "phonetic": "ta"
   },
   {
+    "group": "3",
     "khmer": "្ថ",
     "phonetic": "tha"
   },
   {
+    "group": "4",
     "khmer": "្ទ",
     "phonetic": "to"
   },
   {
+    "group": "4",
     "khmer": "្ធ",
     "phonetic": "tho"
   },
   {
+    "group": "4",
     "khmer": "្ន",
     "phonetic": "no"
   },
   {
+    "group": "3",
     "khmer": "្ប",
     "phonetic": "ba"
   },
   {
+    "group": "3",
     "khmer": "្ផ",
     "phonetic": "pha"
   },
   {
+    "group": "4",
     "khmer": "្ព",
     "phonetic": "po"
   },
   {
+    "group": "4",
     "khmer": "្ភ",
     "phonetic": "pho"
   },
   {
+    "group": "4",
     "khmer": "្ម",
     "phonetic": "mo"
   },
   {
+    "group": "4",
     "khmer": "្យ",
     "phonetic": "yo"
   },
   {
+    "group": "4",
     "khmer": "្រ",
     "phonetic": "ro"
   },
   {
+    "group": "4",
     "khmer": "្ល",
     "phonetic": "lo"
   },
   {
+    "group": "4",
     "khmer": "្វ",
     "phonetic": "vo"
   }
