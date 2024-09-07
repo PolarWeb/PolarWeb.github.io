@@ -79,10 +79,27 @@
             font-size: 24px;
             color: #0C1844; 
             font-weight: bold;
+            display: flex;
+            gap: 20px;
         }
-        .correct {
-            background-color: #4CAF50 !important;
-            color: white !important;
+        .tracker span {
+            display: flex;
+            align-items: center;
+        }
+        .tracker span::before {
+            margin-right: 5px;
+        }
+        .correct::before {
+            content: '✓';
+            color: #4CAF50;
+        }
+        .incorrect::before {
+            content: '✗';
+            color: #C80036;
+        }
+        .remaining::before {
+            content: '◻';
+            color: #0C1844;
         }
         .back-button {
             position: absolute;
@@ -108,7 +125,11 @@
 </head>
 <body>
     <a href="../index.html" class="back-button">Back</a>
-    <div class="tracker" id="tracker">Correct: 0 Incorrect: 0 Remaining: 0</div>
+    <div class="tracker" id="tracker">
+        <span class="correct">0</span>
+        <span class="incorrect">0</span>
+        <span class="remaining">0</span>
+    </div>
     <div class="container">
         <div class="khmer-letter-container">
             <div class="khmer-letter" id="khmerLetter"></div>
@@ -143,7 +164,12 @@
             });
 
         function updateTracker() {
-            document.getElementById('tracker').textContent = `Correct: ${correct} | Incorrect: ${incorrect} | Remaining: ${remaining}`;
+            const trackerElement = document.getElementById('tracker');
+            trackerElement.innerHTML = `
+                <span class="correct">${correct}</span>
+                <span class="incorrect">${incorrect}</span>
+                <span class="remaining">${remaining}</span>
+            `;
         }
 
         function newRound() {
