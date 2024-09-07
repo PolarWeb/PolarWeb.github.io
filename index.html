@@ -109,13 +109,17 @@
         let remaining;
 
         // Load JSON data
-        fetch('khmer-consonant-list.json')
+        fetch('./khmer-consonant-list.JSON')  // Use a relative path
             .then(response => response.json())
             .then(data => {
                 consonants = data;
                 remaining = consonants.length;
                 updateTracker();
                 newRound();
+            })
+            .catch(error => {
+                console.error('Error loading JSON:', error);
+                alert('Failed to load consonant data. Please try refreshing the page.');
             });
 
         function updateTracker() {
