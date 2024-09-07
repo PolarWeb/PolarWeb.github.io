@@ -67,6 +67,10 @@
             color: #0C1844; 
             font-weight: bold;
         }
+        .correct {
+            background-color: #4CAF50 !important; /* Green color for correct answer */
+            color: white !important;
+        }
         @keyframes float {
             0% { transform: translate(-50%, -50%) translateY(0px); }
             50% { transform: translate(-50%, -50%) translateY(-10px); }
@@ -169,16 +173,27 @@
 
         function checkAnswer(button) {
             const resultElement = document.getElementById('result');
+            const buttons = document.querySelectorAll('.option');
+            
             if (button.textContent === currentConsonant.phonetic) {
                 resultElement.innerHTML = '✓';
-                // Removed color setting here as it's now in the CSS
+                correct++;  // Increment correct count
             } else {
                 resultElement.innerHTML = '✗';
-                // Removed color setting here as it's now in the CSS
+                incorrect++;  // Increment incorrect count
+                // Highlight the correct answer
+                buttons.forEach(btn => {
+                    if (btn.textContent === currentConsonant.phonetic) {
+                        btn.classList.add('correct');
+                    }
+                });
             }
             resultElement.style.display = 'block';
+            updateTracker();  // Update the tracker after each answer
             setTimeout(() => {
                 resultElement.style.display = 'none';
+                // Remove the 'correct' class from all buttons
+                buttons.forEach(btn => btn.classList.remove('correct'));
                 newRound();
             }, 1500);
         }
