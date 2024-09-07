@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khmer Letter Game</title>
+    <style>
+        body {
+            background-color: #FFF5E1;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+        }
+        .khmer-letter-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .khmer-letter {
+            font-size: 180px;
+            color: #0C1844;
+        }
+        .option {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            padding: 10px;
+            background-color: #FF6969;
+            color: #FFF5E1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .option:hover {
+            background-color: #C80036;
+        }
+        .option:nth-child(2) { top: -35px; left: 20px; }
+        .option:nth-child(3) { top: -35px; right: 20px; }
+        .option:nth-child(4) { bottom: -35px; left: 20px; }
+        .option:nth-child(5) { bottom: -35px; right: 20px; }
+        .result {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80px;
+            display: none;
+            color: #C80036;
+            width: 100%; 
+            text-align: center; 
+        }
+        .tracker {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: #0C1844; 
+            font-weight: bold;
+        }
+        .correct {
+            background-color: #4CAF50 !important;
+            color: white !important;
+        }
+        .back-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: #FF6969;
+            color: #FFF5E1;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #C80036;
+        }
+        @media (hover: none) {
+            .option:hover {
+                background-color: #FF6969;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-button">Back</a>
+    <div class="tracker" id="tracker">Correct: 0 Incorrect: 0 Remaining: 0</div>
+    <div class="container">
+        <div class="khmer-letter-container">
+            <div class="khmer-letter" id="khmerLetter"></div>
+        </div>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        let consonants = [];
+        let currentConsonant;
+        let correct = 0;
+        let incorrect = 0;
+        let remaining;
+        let isWaitingForNextRound = false;
+
+        // Load JSON data
+        fetch('./khmer-consonant-list.JSON')  // Use a relative path
+            .then(response => response.json())
+            .then(data => {
+                consonants = data;
+                remaining = consonants.length;
+                updateTracker();
+                newRound();
+            })
+            .catch(error => {
+                console.error('Error loading JSON:', error);
+                alert('Failed to load consonant data. Please try refreshing the page.');
+            });
+
+        function updateTracker() {
+            document.getElementById('tracker').textContent = `Correct: ${correct} | Incorrect: ${incorrect} | Remaining: ${remaining}`;
+        }
+
+        function newRound() {
+            if (remaining === 0) {
+                alert("Game Over! You've seen all the consonants.");
+                return;
+            }
+
+            const index = Math.floor(Math.random() * consonants.length);
+            currentConsonant = consonants[index];
+            consonants.splice(index, 1);
+            remaining--;
+
+            document.getElementById('khmerLetter').textContent = currentConsonant.khmer;
+
+            const options = [currentConsonant.phonetic];
+            while (options.length < 4) {
+                const randomPhonetic = consonants[Math.floor(Math.random() * consonants.length)].phonetic;
+                if (!options.includes(randomPhonetic)) {
+                    options.push(randomPhonetic);
+                }
+            }
+
+            // Shuffle options
+            options.sort(() => Math.random() - 0.5);
+
+            // Set button text
+            const buttons = document.querySelectorAll('.option');
+            buttons.forEach((button, index) => {
+                button.textContent = options[index];
+            });
+
+            updateTracker();
+        }
+
+        function checkAnswer(button) {
+            if (isWaitingForNextRound) return; // Prevent multiple clicks while waiting
+
+            const resultElement = document.getElementById('result');
+            const buttons = document.querySelectorAll('.option');
+            
+            isWaitingForNextRound = true;
+            
+            if (button.textContent === currentConsonant.phonetic) {
+                resultElement.innerHTML = '✓';
+                correct++;
+                button.classList.add('correct');
+                playPronunciation(currentConsonant);
+            } else {
+                resultElement.innerHTML = '✗';
+                incorrect++;
+                // Highlight the correct answer
+                buttons.forEach(btn => {
+                    if (btn.textContent === currentConsonant.phonetic) {
+                        btn.classList.add('correct');
+                    }
+                });
+            }
+            resultElement.style.display = 'block';
+            updateTracker();
+            
+            // Disable all buttons after an answer is selected
+            buttons.forEach(btn => btn.disabled = true);
+
+            setTimeout(prepareNextRound, 1500);
+        }
+
+        function prepareNextRound() {
+            const resultElement = document.getElementById('result');
+            resultElement.style.display = 'none';
+            
+            const buttons = document.querySelectorAll('.option');
+            buttons.forEach(btn => {
+                btn.classList.remove('correct');
+                btn.disabled = false;
+                btn.blur();
+            });
+
+            isWaitingForNextRound = false;
+            newRound();
+        }
+
+        function playPronunciation(consonant) {
+            // This function is not defined in the provided code, so I'll leave it as is.
+            // You might need to implement this function or adjust it according to your needs.
+        }
+    </script>
+</body>
+</html>
