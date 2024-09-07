@@ -135,6 +135,7 @@
         let correct = 0;
         let incorrect = 0;
         let remaining;
+        let isWaitingForNextRound = false;
 
         // Load JSON data
         fetch('./khmer-consonant-list.JSON')  // Use a relative path
@@ -160,14 +161,6 @@
                 return;
             }
 
-            const buttons = document.querySelectorAll('.option');
-            // Remove the 'correct' class and re-enable all buttons
-            buttons.forEach(btn => {
-                btn.classList.remove('correct');
-                btn.disabled = false;
-                btn.blur();  // Clear focus state
-            });
-
             const index = Math.floor(Math.random() * consonants.length);
             currentConsonant = consonants[index];
             consonants.splice(index, 1);
@@ -187,6 +180,7 @@
             options.sort(() => Math.random() - 0.5);
 
             // Set button text
+            const buttons = document.querySelectorAll('.option');
             buttons.forEach((button, index) => {
                 button.textContent = options[index];
             });
@@ -195,8 +189,12 @@
         }
 
         function checkAnswer(button) {
+            if (isWaitingForNextRound) return; // Prevent multiple clicks while waiting
+
             const resultElement = document.getElementById('result');
             const buttons = document.querySelectorAll('.option');
+            
+            isWaitingForNextRound = true;
             
             if (button.textContent === currentConsonant.phonetic) {
                 resultElement.innerHTML = '✓';
@@ -219,10 +217,27 @@
             // Disable all buttons after an answer is selected
             buttons.forEach(btn => btn.disabled = true);
 
-            setTimeout(() => {
-                resultElement.style.display = 'none';
-                newRound();
-            }, 1500);
+            setTimeout(prepareNextRound, 1500);
+        }
+
+        function prepareNextRound() {
+            const resultElement = document.getElementById('result');
+            resultElement.style.display = 'none';
+            
+            const buttons = document.querySelectorAll('.option');
+            buttons.forEach(btn => {
+                btn.classList.remove('correct');
+                btn.disabled = false;
+                btn.blur();
+            });
+
+            isWaitingForNextRound = false;
+            newRound();
+        }
+
+        function playPronunciation(consonant) {
+            // This function is not defined in the provided code, so I'll leave it as is.
+            // You might need to implement this function or adjust it according to your needs.
         }
     </script>
 </body>
