@@ -56,10 +56,10 @@
         .option:hover {
             background-color: #C80036;
         }
-        .option:nth-child(2) { top: -55px; left: 20px; }
-        .option:nth-child(3) { top: -55px; right: 20px; }
-        .option:nth-child(4) { bottom: -55px; left: 20px; }
-        .option:nth-child(5) { bottom: -55px; right: 20px; }
+        .option:nth-child(2) { top: -35px; left: 20px; }
+        .option:nth-child(3) { top: -35px; right: 20px; }
+        .option:nth-child(4) { bottom: -35px; left: 20px; }
+        .option:nth-child(5) { bottom: -35px; right: 20px; }
         .result {
             position: absolute;
             top: 80%;
@@ -160,9 +160,12 @@
                 return;
             }
 
-            // Clear hover states
-            document.querySelectorAll('.option').forEach(button => {
-                button.blur();
+            const buttons = document.querySelectorAll('.option');
+            // Remove the 'correct' class and re-enable all buttons
+            buttons.forEach(btn => {
+                btn.classList.remove('correct');
+                btn.disabled = false;
+                btn.blur();  // Clear focus state
             });
 
             const index = Math.floor(Math.random() * consonants.length);
@@ -184,9 +187,8 @@
             options.sort(() => Math.random() - 0.5);
 
             // Set button text
-            document.querySelectorAll('.option').forEach((button, index) => {
+            buttons.forEach((button, index) => {
                 button.textContent = options[index];
-                button.disabled = false;  // Ensure buttons are enabled
             });
 
             updateTracker();
@@ -199,7 +201,7 @@
             if (button.textContent === currentConsonant.phonetic) {
                 resultElement.innerHTML = '✓';
                 correct++;
-                button.classList.add('correct');  // Add 'correct' class to the clicked button
+                button.classList.add('correct');
                 playPronunciation(currentConsonant);
             } else {
                 resultElement.innerHTML = '✗';
@@ -219,11 +221,6 @@
 
             setTimeout(() => {
                 resultElement.style.display = 'none';
-                // Remove the 'correct' class from all buttons
-                buttons.forEach(btn => {
-                    btn.classList.remove('correct');
-                    btn.disabled = false;  // Re-enable buttons for the next round
-                });
                 newRound();
             }, 1500);
         }
