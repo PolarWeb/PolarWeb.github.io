@@ -26,7 +26,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 180px;
-            color: #0C1844;  // Changed to #0C1844
+            color: #0C1844; 
             animation: float 3s ease-in-out infinite;
         }
         .option {
@@ -49,20 +49,23 @@
         .option:nth-child(5) { bottom: 20px; right: 20px; animation: float4 3.8s ease-in-out infinite; }
         .result {
             position: absolute;
-            top: 80%;  // Moved down from 75% to 80%
+            top: 80%;
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 80px;
             display: none;
-            color: #C80036;  // Added color #C80036
+            color: #C80036;
+            width: 100%; 
+            text-align: center; 
         }
         .tracker {
             position: absolute;
             top: 10px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 24px;  // Increased from 18px to 24px
-            color: #C80036;  // Changed from #0C1844 to #C80036
+            font-size: 24px;
+            color: #0C1844; 
+            font-weight: bold;
         }
         @keyframes float {
             0% { transform: translate(-50%, -50%) translateY(0px); }
@@ -92,7 +95,7 @@
     </style>
 </head>
 <body>
-    <div class="tracker" id="tracker">Correct: 0 | Incorrect: 0 | Remaining: 0</div>
+    <div class="tracker" id="tracker">Correct: 0 Incorrect: 0 Remaining: 0</div>
     <div class="container">
         <div class="khmer-letter" id="khmerLetter"></div>
         <button class="option" onclick="checkAnswer(this)"></button>
@@ -132,6 +135,11 @@
                 alert("Game Over! You've seen all the consonants.");
                 return;
             }
+
+            // Clear hover states
+            document.querySelectorAll('.option').forEach(button => {
+                button.blur();
+            });
 
             const index = Math.floor(Math.random() * consonants.length);
             currentConsonant = consonants[index];
