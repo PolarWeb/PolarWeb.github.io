@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khmer Letter Game</title>
+    <style>
+        body {
+            background-color: #FFF5E1;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+        }
+        .khmer-letter {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 180px;
+            color: #C80036;
+            animation: float 3s ease-in-out infinite;
+        }
+        .option {
+            position: absolute;
+            padding: 15px 30px;
+            background-color: #FF6969;
+            color: #FFF5E1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 24px;
+        }
+        .option:hover {
+            background-color: #C80036;
+        }
+        .option:nth-child(2) { top: 20px; left: 20px; animation: float1 4s ease-in-out infinite; }
+        .option:nth-child(3) { top: 20px; right: 20px; animation: float2 3.5s ease-in-out infinite; }
+        .option:nth-child(4) { bottom: 20px; left: 20px; animation: float3 4.5s ease-in-out infinite; }
+        .option:nth-child(5) { bottom: 20px; right: 20px; animation: float4 3.8s ease-in-out infinite; }
+        .result {
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80px;
+            display: none;
+        }
+        .tracker {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            color: #0C1844;
+        }
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) translateY(0px); }
+            50% { transform: translate(-50%, -50%) translateY(-10px); }
+            100% { transform: translate(-50%, -50%) translateY(0px); }
+        }
+        @keyframes float1 {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px) translateX(5px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes float2 {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px) translateX(-3px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes float3 {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-7px) translateX(-6px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes float4 {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-9px) translateX(4px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="tracker" id="tracker">Correct: 0 | Incorrect: 0 | Remaining: 0</div>
+    <div class="container">
+        <div class="khmer-letter" id="khmerLetter"></div>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        let consonants = [];
+        let currentConsonant;
+        let correct = 0;
+        let incorrect = 0;
+        let remaining;
+
+        // Load JSON data
+        fetch('khmer-consonant-list.json')
+            .then(response => response.json())
+            .then(data => {
+                consonants = data;
+                remaining = consonants.length;
+                updateTracker();
+                newRound();
+            });
+
+        function updateTracker() {
+            document.getElementById('tracker').textContent = `Correct: ${correct} | Incorrect: ${incorrect} | Remaining: ${remaining}`;
+        }
+
+        function newRound() {
+            if (remaining === 0) {
+                alert("Game Over! You've seen all the consonants.");
+                return;
+            }
+
+            const index = Math.floor(Math.random() * consonants.length);
+            currentConsonant = consonants[index];
+            consonants.splice(index, 1);
+            remaining--;
+
+            document.getElementById('khmerLetter').textContent = currentConsonant.khmer;
+
+            const options = [currentConsonant.phonetic];
+            while (options.length < 4) {
+                const randomPhonetic = consonants[Math.floor(Math.random() * consonants.length)].phonetic;
+                if (!options.includes(randomPhonetic)) {
+                    options.push(randomPhonetic);
+                }
+            }
+
+            // Shuffle options
+            options.sort(() => Math.random() - 0.5);
+
+            // Set button text
+            document.querySelectorAll('.option').forEach((button, index) => {
+                button.textContent = options[index];
+            });
+
+            updateTracker();
+        }
+
+        function checkAnswer(button) {
+            const resultElement = document.getElementById('result');
+            if (button.textContent === currentConsonant.phonetic) {
+                resultElement.innerHTML = '✓';
+                resultElement.style.color = '#0C1844';
+                correct++;
+            } else {
+                resultElement.innerHTML = '✗';
+                resultElement.style.color = '#C80036';
+                incorrect++;
+            }
+            resultElement.style.display = 'block';
+            setTimeout(() => {
+                resultElement.style.display = 'none';
+                newRound();
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
