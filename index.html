@@ -26,7 +26,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 180px;
-            color: #C80036;
+            color: #0C1844;  // Changed to #0C1844
             animation: float 3s ease-in-out infinite;
         }
         .option {
@@ -49,19 +49,20 @@
         .option:nth-child(5) { bottom: 20px; right: 20px; animation: float4 3.8s ease-in-out infinite; }
         .result {
             position: absolute;
-            top: 75%;
+            top: 80%;  // Moved down from 75% to 80%
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 80px;
             display: none;
+            color: #C80036;  // Added color #C80036
         }
         .tracker {
             position: absolute;
             top: 10px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 18px;
-            color: #0C1844;
+            font-size: 24px;  // Increased from 18px to 24px
+            color: #C80036;  // Changed from #0C1844 to #C80036
         }
         @keyframes float {
             0% { transform: translate(-50%, -50%) translateY(0px); }
@@ -162,12 +163,10 @@
             const resultElement = document.getElementById('result');
             if (button.textContent === currentConsonant.phonetic) {
                 resultElement.innerHTML = '✓';
-                resultElement.style.color = '#0C1844';
-                correct++;
+                // Removed color setting here as it's now in the CSS
             } else {
                 resultElement.innerHTML = '✗';
-                resultElement.style.color = '#C80036';
-                incorrect++;
+                // Removed color setting here as it's now in the CSS
             }
             resultElement.style.display = 'block';
             setTimeout(() => {
