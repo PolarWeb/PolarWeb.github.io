@@ -251,3 +251,19 @@ body {
     background-color: rgba(255, 245, 225, 0.9);
     z-index: 100;
 }
+@media (min-width: 1024px) { /* Adjust the width as needed for your definition of desktop */
+    body {
+        background-image: url('img/Scene-20.jpg');
+        background-size: cover; /* Cover the entire viewport */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Prevent the image from repeating */
+    }
+    .top-bar  {
+        background-color: rgba(255, 245, 225, 0.0);
+    }
+    .container  {
+        background-color: rgba(255, 245, 225, 0.0);
+        margin-top: -180px;
+    }
+
+}
