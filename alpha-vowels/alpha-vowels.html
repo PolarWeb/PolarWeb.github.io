@@ -222,7 +222,7 @@
 
         function showGroupInfo(group) {
             const popup = document.getElementById('popup');
-            const popupContent = document.getElementById('popupContent');
+            const popupContent = document.getElementById('popup-content');
             const groupVowels = vowels.filter(v => v.group === group);
             
             let content = `<h3>${group} Vowels</h3><ul>`;
@@ -233,7 +233,7 @@
             content += '</ul>';
             
             popupContent.innerHTML = content;
-            popup.style.display = 'block';
+            popup.classList.remove('hidden');
 
             // Log the first vowel object for debugging
             if (groupVowels.length > 0) {
