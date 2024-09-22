@@ -72,7 +72,7 @@
         let incorrect = 0;
         let remaining;
 
-        fetch('../khmer-vowel-list.JSON')
+        fetch('khmer-vowel-list.JSON')
             .then(response => response.json())
             .then(data => {
                 vowels = data;
