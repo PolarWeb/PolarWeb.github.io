@@ -1,0 +1,203 @@
+[
+    {
+        "english": "big",
+        "khmer": "ធំ",
+        "phonetic": "thom"
+    },
+    {
+        "english": "small",
+        "khmer": "តូច",
+        "phonetic": "toch"
+    },
+    {
+        "english": "good",
+        "khmer": "ល្អ",
+        "phonetic": "la-or"
+    },
+    {
+        "english": "bad",
+        "khmer": "អាក្រក់",
+        "phonetic": "akrok"
+    },
+    {
+        "english": "happy",
+        "khmer": "រីករាយ",
+        "phonetic": "reik-reay"
+    },
+    {
+        "english": "sad",
+        "khmer": "ក្រៀមក្រំ",
+        "phonetic": "kriem-krom"
+    },
+    {
+        "english": "hot",
+        "khmer": "ក្តៅ",
+        "phonetic": "kdao"
+    },
+    {
+        "english": "cold",
+        "khmer": "ត្រជាក់",
+        "phonetic": "trachak"
+    },
+    {
+        "english": "beautiful",
+        "khmer": "ស្អាត",
+        "phonetic": "sa-at"
+    },
+    {
+        "english": "ugly",
+        "khmer": "អាក្រក់",
+        "phonetic": "akrok"
+    },
+    {
+        "english": "fast",
+        "khmer": "លឿន",
+        "phonetic": "luen"
+    },
+    {
+        "english": "slow",
+        "khmer": "យឺត",
+        "phonetic": "yuet"
+    },
+    {
+        "english": "strong",
+        "khmer": "មាំ",
+        "phonetic": "mom"
+    },
+    {
+        "english": "weak",
+        "khmer": "ខ្សោយ",
+        "phonetic": "k'saoj"
+    },
+    {
+        "english": "clean",
+        "khmer": "ស្អាត",
+        "phonetic": "sa-at"
+    },
+    {
+        "english": "dirty",
+        "khmer": "កខ្វក់",
+        "phonetic": "kak-hvok"
+    },
+    {
+        "english": "new",
+        "khmer": "ថ្មី",
+        "phonetic": "thmei"
+    },
+    {
+        "english": "old",
+        "khmer": "ចាស់",
+        "phonetic": "chas"
+    },
+    {
+        "english": "easy",
+        "khmer": "ងាយ",
+        "phonetic": "ngeay"
+    },
+    {
+        "english": "difficult",
+        "khmer": "ពិបាក",
+        "phonetic": "pi-bak"
+    },
+    {
+        "english": "angry",
+        "khmer": "ខឹង",
+        "phonetic": "kheung"
+    },
+    {
+        "english": "calm",
+        "khmer": "ស្ងប់",
+        "phonetic": "sngob"
+    },
+    {
+        "english": "tall",
+        "khmer": "ខ្ពស់",
+        "phonetic": "kpous"
+    },
+    {
+        "english": "short",
+        "khmer": "ទាប",
+        "phonetic": "teab"
+    },
+    {
+        "english": "cheap",
+        "khmer": "ថោក",
+        "phonetic": "thao"
+    },
+    {
+        "english": "expensive",
+        "khmer": "ថ្លៃ",
+        "phonetic": "tlai"
+    },
+    {
+        "english": "strong",
+        "khmer": "មាំ",
+        "phonetic": "mom"
+    },
+    {
+        "english": "weak",
+        "khmer": "ខ្សោយ",
+        "phonetic": "k'saoj"
+    },
+    {
+        "english": "light",
+        "khmer": "ស្រាល",
+        "phonetic": "sral"
+    },
+    {
+        "english": "heavy",
+        "khmer": "ធ្ងន់",
+        "phonetic": "thngun"
+    },
+    {
+        "english": "early",
+        "khmer": "ដើម",
+        "phonetic": "daum"
+    },
+    {
+        "english": "late",
+        "khmer": "យឺត",
+        "phonetic": "yuet"
+    },
+    {
+        "english": "noisy",
+        "khmer": "អ៊ូអរ",
+        "phonetic": "ou-or"
+    },
+    {
+        "english": "quiet",
+        "khmer": "ស្ងាត់",
+        "phonetic": "sngat"
+    },
+    {
+        "english": "rich",
+        "khmer": "មាន",
+        "phonetic": "mean"
+    },
+    {
+        "english": "poor",
+        "khmer": "ក្រីក្រ",
+        "phonetic": "krey-krak"
+    },
+    {
+        "english": "lazy",
+        "khmer": "ខ្ជិល",
+        "phonetic": "khchel"
+    },
+    {
+        "english": "busy",
+        "khmer": "រវល់",
+        "phonetic": "ro-vol"
+    },
+    {
+        "english": "brave",
+        "khmer": "ក្លាហាន",
+        "phonetic": "kla-han"
+    },
+    {
+        "english": "afraid",
+        "khmer": "ខ្លាច",
+        "phonetic": "klach"
+    }
+]
+  
