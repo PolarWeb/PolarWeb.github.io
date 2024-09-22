@@ -3,74 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles.css">
     <title>Khmer Vowels Practice</title>
-    
-   <!-- <style>
-        body {
-            margin: 0 !important;
-            padding: 0 !important;
-            height: 100vh !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            overflow: hidden !important;
-        }
-        .container {
-            position: relative !important;
-            width: 500px !important;
-            height: 500px !important;
-            display: flex;
-            flex-direction: column; /* Stack buttons vertically */
-            align-items: center; /* Center buttons horizontally */
-        }
-        .group-selection {
-            position: fixed !important;
-            top: 50% !important;
-            left: 50% !important;
-            transform: translate(-50%, -50%) !important;
-            width: 90% !important;
-            max-width: 400px !important;
-            background-color: white !important;
-            padding: 30px !important;
-            border-radius: 10px !important;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1) !important;
-            z-index: 1000 !important;
-        }
-        .group-selection h2 {
-            margin-bottom: 20px !important;
-        }
-        .group-selection div {
-            margin-bottom: 10px !important;
-        }
-        .group-selection label {
-            font-size: 18px !important;
-        }
-        .start-button {
-            margin-top: 20px !important;
-            padding: 10px 20px !important;
-            font-size: 18px !important;
-        }
-        .hidden {
-            display: none !important;
-        }
-        .result {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 48px;
-            z-index: 10;
-        }
-        .option {
-            margin: 10px; /* Add margin to space out the buttons */
-            padding: 10px 20px; /* Adjust padding for better appearance */
-            font-size: 18px; /* Ensure font size is consistent */
-        }
-        -->
-    </style>
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
+    <div class="top-bar">
+        <button class="reset-button" onclick="resetGame()">Reset</button>
+        <div class="tracker" id="tracker">
+            <span class="correct">0</span>
+            <span class="incorrect">0</span>
+            <span class="remaining">0</span>
+        </div>
+        <a href="../index.html" class="back-button">Back</a>
+    </div>
+    <div class="group-selection" id="groupSelection">
+        <h2>Select Groups</h2>
+        <div>
+            <label><input type="checkbox" value="1"> Group 1</label>
+            <span class="group-info" onclick="showGroupInfo(1)">?</span>
+        </div>
+        <div>
+            <label><input type="checkbox" value="2"> Group 2</label>
+            <span class="group-info" onclick="showGroupInfo(2)">?</span>
+        </div>
+        <button class="start-button" onclick="startGame()">Start Game</button>
+    </div>
+    <div id="popup" class="popup">
+        <span class="close-popup" onclick="closePopup()">&times;</span>
+        <div id="popupContent" class="popup-content"></div>
+    </div>
+    <div class="container hidden" id="gameContainer">
+        <div class="khmer-letter-container">
+            <div class="khmer-letter" id="khmerLetter"></div>
+        </div>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <div class="result" id="result"></div>
+    </div>
+
+
+
+<!----
+    <div class="top-bar">
+        <button class="reset-button" onclick="resetGame()">Reset</button>
+        <div class="tracker" id="tracker">
+            <span class="correct">0</span>
+            <span class="incorrect">0</span>
+            <span class="remaining">0</span>
+        </div>
+        <a href="../index.html" class="back-button">Back</a>
+    </div>
+    <div class="group-selection" id="groupSelection">
+        <h2>Select Groups</h2>
+        <div>
+            <label><input type="checkbox" value="1"> Group 1</label>
+            <span class="group-info" onclick="showGroupInfo(1)">?</span>
+        </div>
+        <div>
+            <label><input type="checkbox" value="2"> Group 2</label>
+            <span class="group-info" onclick="showGroupInfo(2)">?</span>
+        </div>
+        <div>
+            <label><input type="checkbox" value="3"> Group 3</label>
+            <span class="group-info" onclick="showGroupInfo(3)">?</span>
+        </div>
+        <div>
+            <label><input type="checkbox" value="4"> Group 4</label>
+            <span class="group-info" onclick="showGroupInfo(4)">?</span>
+        </div>
+        <button class="start-button" onclick="startGame()">Start Game</button>
+    </div>
+    <div id="popup" class="popup">
+        <span class="close-popup" onclick="closePopup()">&times;</span>
+        <div id="popupContent" class="popup-content"></div>
+    </div>
+    <div class="container hidden" id="gameContainer">
+        <div class="khmer-letter-container">
+            <div class="khmer-letter" id="khmerLetter"></div>
+        </div>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <div class="result" id="result"></div>
+    </div>
     <div class="container hidden"  id="gameContainer">
         <div class="khmer-letter-container">
             <div id="khmer-letter" class="khmer-letter"></div>
@@ -108,6 +126,11 @@
     </div>
     <button class="reset-button hidden" onclick="resetGame()">Reset</button>
     <a href="../index.html" class="back-button">Back</a>
+-->
+
+
+
+
 
     <script>
         let vowels = [];
