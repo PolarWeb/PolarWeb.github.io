@@ -19,117 +19,29 @@
     <div class="group-selection" id="groupSelection">
         <h2>Select Groups</h2>
         <div>
-            <label><input type="checkbox" value="1"> Group 1</label>
-            <span class="group-info" onclick="showGroupInfo(1)">?</span>
-        </div>
-        <div>
-            <label><input type="checkbox" value="2"> Group 2</label>
-            <span class="group-info" onclick="showGroupInfo(2)">?</span>
-        </div>
-        <button class="start-button" onclick="startGame()">Start Game</button>
-    </div>
-    <div id="popup" class="popup">
-        <span class="close-popup" onclick="closePopup()">&times;</span>
-        <div id="popupContent" class="popup-content"></div>
-    </div>
-    <div class="container hidden" id="gameContainer">
-        <div class="khmer-letter-container">
-            <div class="khmer-letter" id="khmerLetter"></div>
-        </div>
-        <button class="option" onclick="checkAnswer(this)"></button>
-        <button class="option" onclick="checkAnswer(this)"></button>
-        <button class="option" onclick="checkAnswer(this)"></button>
-        <button class="option" onclick="checkAnswer(this)"></button>
-        <div class="result" id="result"></div>
-    </div>
-
-
-
-<!----
-    <div class="top-bar">
-        <button class="reset-button" onclick="resetGame()">Reset</button>
-        <div class="tracker" id="tracker">
-            <span class="correct">0</span>
-            <span class="incorrect">0</span>
-            <span class="remaining">0</span>
-        </div>
-        <a href="../index.html" class="back-button">Back</a>
-    </div>
-    <div class="group-selection" id="groupSelection">
-        <h2>Select Groups</h2>
-        <div>
-            <label><input type="checkbox" value="1"> Group 1</label>
-            <span class="group-info" onclick="showGroupInfo(1)">?</span>
-        </div>
-        <div>
-            <label><input type="checkbox" value="2"> Group 2</label>
-            <span class="group-info" onclick="showGroupInfo(2)">?</span>
-        </div>
-        <div>
-            <label><input type="checkbox" value="3"> Group 3</label>
-            <span class="group-info" onclick="showGroupInfo(3)">?</span>
-        </div>
-        <div>
-            <label><input type="checkbox" value="4"> Group 4</label>
-            <span class="group-info" onclick="showGroupInfo(4)">?</span>
-        </div>
-        <button class="start-button" onclick="startGame()">Start Game</button>
-    </div>
-    <div id="popup" class="popup">
-        <span class="close-popup" onclick="closePopup()">&times;</span>
-        <div id="popupContent" class="popup-content"></div>
-    </div>
-    <div class="container hidden" id="gameContainer">
-        <div class="khmer-letter-container">
-            <div class="khmer-letter" id="khmerLetter"></div>
-        </div>
-        <button class="option" onclick="checkAnswer(this)"></button>
-        <button class="option" onclick="checkAnswer(this)"></button>
-        <button class="option" onclick="checkAnswer(this)"></button>
-        <button class="option" onclick="checkAnswer(this)"></button>
-        <div class="result" id="result"></div>
-    </div>
-    <div class="container hidden"  id="gameContainer">
-        <div class="khmer-letter-container">
-            <div id="khmer-letter" class="khmer-letter"></div>
-        </div>
-        <div id="result" class="result"></div>
-        <button class="option" onclick="checkAnswer(this)"></button>
-        <button class="option" onclick="checkAnswer(this)"></button>
-        <button class="option" onclick="checkAnswer(this)"></button>
-        <button class="option" onclick="checkAnswer(this)"></button>
-    </div>
-    <div class="tracker hidden">
-        <span class="correct">0</span>
-        <span class="incorrect">0</span>
-        <span class="remaining">0</span>
-    </div>
-    <div class="group-selection">
-        <h2>Select Vowel Groups</h2>
-        <div>
-            <label>
-                <input type="checkbox" id="groupA" checked> A Vowels
-            </label>
+            <label><input type="checkbox" id="groupA" checked> Group 1</label>
             <span class="group-info" onclick="showGroupInfo('A')">?</span>
         </div>
         <div>
-            <label>
-                <input type="checkbox" id="groupO" checked> O Vowels
-            </label>
+            <label><input type="checkbox" id="groupO" checked> Group 2</label>
             <span class="group-info" onclick="showGroupInfo('O')">?</span>
         </div>
-        <button class="start-button" onclick="startGame()">Start</button>
+        <button class="start-button" onclick="startGame()">Start Game</button>
     </div>
     <div id="popup" class="popup hidden">
         <span class="close-popup" onclick="closePopup()">&times;</span>
-        <div id="popup-content" class="popup-content"></div>
+        <div id="popupContent" class="popup-content"></div>
     </div>
-    <button class="reset-button hidden" onclick="resetGame()">Reset</button>
-    <a href="../index.html" class="back-button">Back</a>
--->
-
-
-
+    <div class="container hidden" id="gameContainer">
+        <div class="khmer-letter-container">
+            <div class="khmer-letter" id="khmerLetter"></div>
+        </div>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <div class="result" id="result"></div>
+    </div>
 
 
     <script>
@@ -188,7 +100,7 @@
             currentVowel = currentVowels[index];
             currentVowels.splice(index, 1);
 
-            document.getElementById('khmer-letter').textContent = currentVowel.khmer;
+            document.getElementById('khmerLetter').textContent = currentVowel.khmer; // Corrected ID
             document.getElementById('result').style.display = 'none';
 
             options = [currentVowel.phonetic];
@@ -272,7 +184,7 @@
 
         function showGroupInfo(group) {
             const popup = document.getElementById('popup');
-            const popupContent = document.getElementById('popup-content');
+            const popupContent = document.getElementById('popupContent'); // Corrected ID
             if (!popup || !popupContent) {
                 console.error('Popup elements not found');
                 return;
