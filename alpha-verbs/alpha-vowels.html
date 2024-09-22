@@ -8,57 +8,175 @@
 </head>
 <body>
     <div class="container">
-        <h1>Khmer Vowels Practice</h1>
-        <div id="options">
-            <button onclick="selectGroup('A')">A Vowels</button>
-            <button onclick="selectGroup('O')">O Vowels</button>
+        <div class="khmer-letter-container">
+            <div id="khmer-letter" class="khmer-letter"></div>
         </div>
-        <div id="practice-area">
-            <p id="khmer-letter"></p>
-            <input type="text" id="user-input" placeholder="Type the transliteration">
-            <button onclick="checkAnswer()">Check</button>
-        </div>
-        <p id="result"></p>
-        <p id="score">Score: <span id="correct">0</span> / <span id="total">0</span></p>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <div id="result" class="result"></div>
     </div>
+    <div class="tracker">
+        <span class="correct">0</span>
+        <span class="incorrect">0</span>
+        <span class="remaining">0</span>
+    </div>
+    <div class="group-selection">
+        <h2>Select Vowel Groups</h2>
+        <div>
+            <label>
+                <input type="checkbox" id="groupA" checked> A Vowels
+            </label>
+            <span class="group-info" onclick="showGroupInfo('A')">?</span>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" id="groupO" checked> O Vowels
+            </label>
+            <span class="group-info" onclick="showGroupInfo('O')">?</span>
+        </div>
+        <button class="start-button" onclick="startGame()">Start</button>
+    </div>
+    <div id="popup" class="popup">
+        <span class="close-popup" onclick="closePopup()">&times;</span>
+        <div id="popup-content"></div>
+    </div>
+    <button class="reset-button" onclick="resetGame()">Reset</button>
+    <a href="../index.html" class="back-button">Back</a>
 
     <script>
         let vowels;
+        let currentVowels;
         let currentVowel;
-        let score = 0;
-        let total = 0;
+        let options;
+        let correct = 0;
+        let incorrect = 0;
+        let remaining;
 
-        fetch('khmer-vowel-list.JSON')
+        fetch('../khmer-vowel-list.JSON')
             .then(response => response.json())
             .then(data => {
                 vowels = data;
+                showGroupSelection();
             });
 
-        function selectGroup(group) {
-            const filteredVowels = vowels.filter(vowel => vowel.group === group);
-            currentVowel = filteredVowels[Math.floor(Math.random() * filteredVowels.length)];
-            document.getElementById('khmer-letter').textContent = currentVowel.khmer;
-            document.getElementById('user-input').value = '';
-            document.getElementById('result').textContent = '';
+        function showGroupSelection() {
+            document.querySelector('.group-selection').style.display = 'block';
+            document.querySelector('.container').style.display = 'none';
+            document.querySelector('.tracker').style.display = 'none';
+            document.querySelector('.reset-button').style.display = 'none';
         }
 
-        function checkAnswer() {
-            const userInput = document.getElementById('user-input').value.trim().toLowerCase();
-            const correctAnswer = currentVowel.latin.toLowerCase();
+        function startGame() {
+            const groupA = document.getElementById('groupA').checked;
+            const groupO = document.getElementById('groupO').checked;
 
-            total++;
-            if (userInput === correctAnswer) {
-                score++;
-                document.getElementById('result').textContent = 'Correct!';
-            } else {
-                document.getElementById('result').textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
+            if (!groupA && !groupO) {
+                alert('Please select at least one group');
+                return;
             }
 
-            document.getElementById('correct').textContent = score;
-            document.getElementById('total').textContent = total;
+            currentVowels = vowels.filter(vowel => 
+                (groupA && vowel.group === 'A') || (groupO && vowel.group === 'O')
+            );
 
-            // Select a new vowel after checking the answer
-            selectGroup(currentVowel.group);
+            remaining = currentVowels.length;
+            updateTracker();
+
+            document.querySelector('.group-selection').style.display = 'none';
+            document.querySelector('.container').style.display = 'block';
+            document.querySelector('.tracker').style.display = 'flex';
+            document.querySelector('.reset-button').style.display = 'block';
+
+            nextVowel();
+        }
+
+        function nextVowel() {
+            if (currentVowels.length === 0) {
+                endGame();
+                return;
+            }
+
+            const index = Math.floor(Math.random() * currentVowels.length);
+            currentVowel = currentVowels[index];
+            currentVowels.splice(index, 1);
+
+            document.getElementById('khmer-letter').textContent = currentVowel.khmer;
+
+            options = [currentVowel.latin];
+            while (options.length < 4) {
+                const randomVowel = vowels[Math.floor(Math.random() * vowels.length)];
+                if (!options.includes(randomVowel.latin)) {
+                    options.push(randomVowel.latin);
+                }
+            }
+            options = options.sort(() => Math.random() - 0.5);
+
+            const optionButtons = document.querySelectorAll('.option');
+            optionButtons.forEach((button, index) => {
+                button.textContent = options[index];
+            });
+
+            document.getElementById('result').style.display = 'none';
+        }
+
+        function checkAnswer(button) {
+            const selectedAnswer = button.textContent;
+            const resultElement = document.getElementById('result');
+
+            if (selectedAnswer === currentVowel.latin) {
+                resultElement.textContent = '✓';
+                resultElement.style.color = '#4CAF50';
+                correct++;
+            } else {
+                resultElement.textContent = '✗';
+                resultElement.style.color = '#C80036';
+                incorrect++;
+            }
+
+            resultElement.style.display = 'block';
+            remaining--;
+            updateTracker();
+
+            setTimeout(nextVowel, 1000);
+        }
+
+        function updateTracker() {
+            document.querySelector('.correct').textContent = correct;
+            document.querySelector('.incorrect').textContent = incorrect;
+            document.querySelector('.remaining').textContent = remaining;
+        }
+
+        function endGame() {
+            const container = document.querySelector('.container');
+            container.innerHTML = `
+                <h2>Game Over</h2>
+                <p>Correct: ${correct}</p>
+                <p>Incorrect: ${incorrect}</p>
+                <button onclick="resetGame()" class="reset-button">Play Again</button>
+            `;
+        }
+
+        function resetGame() {
+            correct = 0;
+            incorrect = 0;
+            showGroupSelection();
+        }
+
+        function showGroupInfo(group) {
+            const groupVowels = vowels.filter(vowel => vowel.group === group);
+            let content = `<h3>${group} Vowels</h3><ul>`;
+            groupVowels.forEach(vowel => {
+                content += `<li>${vowel.khmer} - ${vowel.latin}</li>`;
+            });
+            content += '</ul>';
+            document.getElementById('popup-content').innerHTML = content;
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
         }
     </script>
 </body>
