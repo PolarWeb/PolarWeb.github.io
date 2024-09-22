@@ -19,6 +19,9 @@
             position: relative !important;
             width: 500px !important;
             height: 500px !important;
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            align-items: center; /* Center buttons horizontally */
         }
         .group-selection {
             position: fixed !important;
@@ -57,6 +60,11 @@
             transform: translate(-50%, -50%);
             font-size: 48px;
             z-index: 10;
+        }
+        .option {
+            margin: 10px; /* Add margin to space out the buttons */
+            padding: 10px 20px; /* Adjust padding for better appearance */
+            font-size: 18px; /* Ensure font size is consistent */
         }
     </style>
 </head>
