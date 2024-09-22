@@ -161,6 +161,8 @@
             const optionButtons = document.querySelectorAll('.option');
             optionButtons.forEach((button, index) => {
                 button.textContent = options[index];
+                button.disabled = false;
+                button.classList.remove('correct');
             });
 
             document.getElementById('result').style.display = 'none';
