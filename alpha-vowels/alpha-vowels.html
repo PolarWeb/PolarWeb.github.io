@@ -5,9 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khmer Vowels Practice</title>
     <link rel="stylesheet" href="../styles.css">
+    <style>
+        .group-selection {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container hidden">
         <div class="khmer-letter-container">
             <div id="khmer-letter" class="khmer-letter"></div>
         </div>
@@ -17,7 +35,7 @@
         <button class="option" onclick="checkAnswer(this)"></button>
         <div id="result" class="result"></div>
     </div>
-    <div class="tracker">
+    <div class="tracker hidden">
         <span class="correct">0</span>
         <span class="incorrect">0</span>
         <span class="remaining">0</span>
@@ -38,11 +56,11 @@
         </div>
         <button class="start-button" onclick="startGame()">Start</button>
     </div>
-    <div id="popup" class="popup">
+    <div id="popup" class="popup hidden">
         <span class="close-popup" onclick="closePopup()">&times;</span>
         <div id="popup-content"></div>
     </div>
-    <button class="reset-button" onclick="resetGame()">Reset</button>
+    <button class="reset-button hidden" onclick="resetGame()">Reset</button>
     <a href="../index.html" class="back-button">Back</a>
 
     <script>
@@ -58,17 +76,12 @@
             .then(response => response.json())
             .then(data => {
                 vowels = data;
-                showGroupSelection();
-            });
-
-        function showGroupSelection() {
-            document.querySelector('.group-selection').style.display = 'block';
-            document.querySelector('.container').style.display = 'none';
-            document.querySelector('.tracker').style.display = 'none';
-            document.querySelector('.reset-button').style.display = 'none';
-        }
+                console.log('Vowels loaded:', vowels);
+            })
+            .catch(error => console.error('Error loading vowels:', error));
 
         function startGame() {
+            console.log('Starting game...');
             const groupA = document.getElementById('groupA').checked;
             const groupO = document.getElementById('groupO').checked;
 
@@ -80,14 +93,15 @@
             currentVowels = vowels.filter(vowel => 
                 (groupA && vowel.group === 'A') || (groupO && vowel.group === 'O')
             );
+            console.log('Filtered vowels:', currentVowels);
 
             remaining = currentVowels.length;
             updateTracker();
 
-            document.querySelector('.group-selection').style.display = 'none';
-            document.querySelector('.container').style.display = 'block';
-            document.querySelector('.tracker').style.display = 'flex';
-            document.querySelector('.reset-button').style.display = 'block';
+            document.querySelector('.group-selection').classList.add('hidden');
+            document.querySelector('.container').classList.remove('hidden');
+            document.querySelector('.tracker').classList.remove('hidden');
+            document.querySelector('.reset-button').classList.remove('hidden');
 
             nextVowel();
         }
@@ -161,7 +175,10 @@
         function resetGame() {
             correct = 0;
             incorrect = 0;
-            showGroupSelection();
+            document.querySelector('.group-selection').classList.remove('hidden');
+            document.querySelector('.container').classList.add('hidden');
+            document.querySelector('.tracker').classList.add('hidden');
+            document.querySelector('.reset-button').classList.add('hidden');
         }
 
         function showGroupInfo(group) {
@@ -172,11 +189,11 @@
             });
             content += '</ul>';
             document.getElementById('popup-content').innerHTML = content;
-            document.getElementById('popup').style.display = 'block';
+            document.getElementById('popup').classList.remove('hidden');
         }
 
         function closePopup() {
-            document.getElementById('popup').style.display = 'none';
+            document.getElementById('popup').classList.add('hidden');
         }
     </script>
 </body>
