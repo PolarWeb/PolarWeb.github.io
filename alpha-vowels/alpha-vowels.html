@@ -22,15 +22,15 @@
         }
         .group-selection {
             position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
-            background-color: rgba(255, 255, 255, 0.9) !important;
-            display: flex !important;
-            flex-direction: column !important;
-            justify-content: center !important;
-            align-items: center !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            width: 90% !important;
+            max-width: 400px !important;
+            background-color: white !important;
+            padding: 30px !important;
+            border-radius: 10px !important;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1) !important;
             z-index: 1000 !important;
         }
         .group-selection h2 {
@@ -86,7 +86,7 @@
     </div>
     <div id="popup" class="popup hidden">
         <span class="close-popup" onclick="closePopup()">&times;</span>
-        <div id="popup-content"></div>
+        <div id="popup-content" class="popup-content"></div>
     </div>
     <button class="reset-button hidden" onclick="resetGame()">Reset</button>
     <a href="../index.html" class="back-button">Back</a>
@@ -176,10 +176,12 @@
             
             if (button.textContent === currentVowel.phonetic) {
                 resultElement.innerHTML = '✓';
+                resultElement.style.color = '#4CAF50';
                 correct++;
                 button.classList.add('correct');
             } else {
                 resultElement.innerHTML = '✗';
+                resultElement.style.color = '#C80036';
                 incorrect++;
                 buttons.forEach(btn => {
                     if (btn.textContent === currentVowel.phonetic) {
@@ -188,11 +190,15 @@
                 });
             }
             resultElement.style.display = 'block';
+            remaining--;
             updateTracker();
             
             buttons.forEach(btn => btn.disabled = true);
 
-            setTimeout(prepareNextRound, 1500);
+            setTimeout(() => {
+                isWaitingForNextRound = false;
+                nextVowel();
+            }, 1500);
         }
 
         function updateTracker() {
@@ -223,6 +229,10 @@
         function showGroupInfo(group) {
             const popup = document.getElementById('popup');
             const popupContent = document.getElementById('popup-content');
+            if (!popup || !popupContent) {
+                console.error('Popup elements not found');
+                return;
+            }
             const groupVowels = vowels.filter(v => v.group === group);
             
             let content = `<h3>${group} Vowels</h3><ul>`;
