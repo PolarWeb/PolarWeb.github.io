@@ -50,6 +50,14 @@
         .hidden {
             display: none !important;
         }
+        .result {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            z-index: 10;
+        }
     </style>
 </head>
 <body>
@@ -57,11 +65,11 @@
         <div class="khmer-letter-container">
             <div id="khmer-letter" class="khmer-letter"></div>
         </div>
-        <button class="option" onclick="checkAnswer(this)"></button>
-        <button class="option" onclick="checkAnswer(this)"></button>
-        <button class="option" onclick="checkAnswer(this)"></button>
-        <button class="option" onclick="checkAnswer(this)"></button>
         <div id="result" class="result"></div>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
+        <button class="option" onclick="checkAnswer(this)"></button>
     </div>
     <div class="tracker hidden">
         <span class="correct">0</span>
@@ -148,6 +156,7 @@
             currentVowels.splice(index, 1);
 
             document.getElementById('khmer-letter').textContent = currentVowel.khmer;
+            document.getElementById('result').style.display = 'none';
 
             options = [currentVowel.phonetic];
             while (options.length < 4) {
@@ -165,7 +174,7 @@
                 button.classList.remove('correct');
             });
 
-            document.getElementById('result').style.display = 'none';
+            isWaitingForNextRound = false;
         }
 
         function checkAnswer(button) {
