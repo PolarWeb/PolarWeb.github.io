@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
     <title>Khmer Vowels Practice</title>
     <style>
         body {
@@ -226,12 +227,18 @@
             
             let content = `<h3>${group} Vowels</h3><ul>`;
             groupVowels.forEach(vowel => {
-                content += `<li><strong>${vowel.khmer}</strong> - ${vowel.phonetic}</li>`;
+                const phoneticValue = vowel.phonetic || vowel.latin || 'N/A';
+                content += `<li><strong>${vowel.khmer}</strong> - ${phoneticValue}</li>`;
             });
             content += '</ul>';
             
             popupContent.innerHTML = content;
             popup.style.display = 'block';
+
+            // Log the first vowel object for debugging
+            if (groupVowels.length > 0) {
+                console.log('Sample vowel object:', groupVowels[0]);
+            }
         }
 
         function closePopup() {
