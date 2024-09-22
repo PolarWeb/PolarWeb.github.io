@@ -91,21 +91,24 @@
     <a href="../index.html" class="back-button">Back</a>
 
     <script>
-        let vowels;
-        let currentVowels;
+        let vowels = [];
+        let selectedVowels = [];
         let currentVowel;
-        let options;
         let correct = 0;
         let incorrect = 0;
         let remaining;
+        let isWaitingForNextRound = false;
 
-        fetch('khmer-vowel-list.JSON')
+        // Load JSON data
+        fetch('./khmer-vowel-list.JSON')
             .then(response => response.json())
             .then(data => {
                 vowels = data;
-                console.log('Vowels loaded:', vowels);
             })
-            .catch(error => console.error('Error loading vowels:', error));
+            .catch(error => {
+                console.error('Error loading JSON:', error);
+                alert('Failed to load vowel data. Please try refreshing the page.');
+            });
 
         function startGame() {
             console.log('Starting game...');
@@ -145,11 +148,11 @@
 
             document.getElementById('khmer-letter').textContent = currentVowel.khmer;
 
-            options = [currentVowel.latin];
+            options = [currentVowel.phonetic];
             while (options.length < 4) {
                 const randomVowel = vowels[Math.floor(Math.random() * vowels.length)];
-                if (!options.includes(randomVowel.latin)) {
-                    options.push(randomVowel.latin);
+                if (!options.includes(randomVowel.phonetic)) {
+                    options.push(randomVowel.phonetic);
                 }
             }
             options = options.sort(() => Math.random() - 0.5);
@@ -163,24 +166,32 @@
         }
 
         function checkAnswer(button) {
-            const selectedAnswer = button.textContent;
+            if (isWaitingForNextRound) return;
+
             const resultElement = document.getElementById('result');
-
-            if (selectedAnswer === currentVowel.latin) {
-                resultElement.textContent = '✓';
-                resultElement.style.color = '#4CAF50';
+            const buttons = document.querySelectorAll('.option');
+            
+            isWaitingForNextRound = true;
+            
+            if (button.textContent === currentVowel.phonetic) {
+                resultElement.innerHTML = '✓';
                 correct++;
+                button.classList.add('correct');
             } else {
-                resultElement.textContent = '✗';
-                resultElement.style.color = '#C80036';
+                resultElement.innerHTML = '✗';
                 incorrect++;
+                buttons.forEach(btn => {
+                    if (btn.textContent === currentVowel.phonetic) {
+                        btn.classList.add('correct');
+                    }
+                });
             }
-
             resultElement.style.display = 'block';
-            remaining--;
             updateTracker();
+            
+            buttons.forEach(btn => btn.disabled = true);
 
-            setTimeout(nextVowel, 1000);
+            setTimeout(prepareNextRound, 1500);
         }
 
         function updateTracker() {
@@ -209,14 +220,18 @@
         }
 
         function showGroupInfo(group) {
-            const groupVowels = vowels.filter(vowel => vowel.group === group);
+            const popup = document.getElementById('popup');
+            const popupContent = document.getElementById('popupContent');
+            const groupVowels = vowels.filter(v => v.group === group);
+            
             let content = `<h3>${group} Vowels</h3><ul>`;
             groupVowels.forEach(vowel => {
-                content += `<li>${vowel.khmer} - ${vowel.latin}</li>`;
+                content += `<li><strong>${vowel.khmer}</strong> - ${vowel.phonetic}</li>`;
             });
             content += '</ul>';
-            document.getElementById('popup-content').innerHTML = content;
-            document.getElementById('popup').classList.remove('hidden');
+            
+            popupContent.innerHTML = content;
+            popup.style.display = 'block';
         }
 
         function closePopup() {
