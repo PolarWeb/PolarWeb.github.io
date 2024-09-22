@@ -9,28 +9,37 @@
             font-family: Arial, sans-serif;
             background-color: #FFF5E1;
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Change to column to stack elements */
+            justify-content: flex-start; /* Align items to the top */
             align-items: center;
-            height: 100vh;
+            height: 100vh; /* Keep full viewport height */
             margin: 0;
         }
         .container {
             text-align: center;
+            margin-top: 20px; /* Add some margin to separate from the top */
         }
         h1 {
+            display: block; 
             color: #0C1844;
             margin-bottom: 30px;
+            margin-top: 30px;
         }
         .button {
-            display: inline-block;
-            padding: 15px 30px;
-            margin: 10px;
+            display: block; /* Stack links vertically */
+            width: 200px; /* Set a fixed width */
+            height: 40px; /* Set a fixed height */
+            padding: 10px; /* Optional: Add padding for better appearance */
+            margin: 10px auto; /* Center the buttons and add vertical spacing */
             background-color: #FF6969;
             color: #FFF5E1;
             text-decoration: none;
             border-radius: 5px;
-            font-size: 18px;
+            font-size: 26px;
+            text-align: center; /* Center text horizontally */
+            line-height: 45px; /* Center text vertically by matching the height */
             transition: background-color 0.3s;
+            
         }
         .button:hover {
             background-color: #C80036;
@@ -45,6 +54,9 @@
         <a href="/alpha-verbs/verbs.html" class="button">Verbs</a>
         <a href="/alpha-nouns/nouns.html" class="button">Nouns</a>
         <a href="/alpha-adjectives/adjectives.html" class="button">Adjectives</a>
+        <a href="/pronouns/pronouns.html" class="button">Pronouns</a>
+        <a href="/conjunctions/conjunctions.html" class="button">Conjunctions</a>
+        <a href="/adverbs/adverbs.html" class="button">Adverbs</a>
     </div>
 </body>
 </html>
