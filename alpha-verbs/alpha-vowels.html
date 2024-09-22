@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khmer Vowels Practice</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Khmer Vowels Practice</h1>
+        <div id="options">
+            <button onclick="selectGroup('A')">A Vowels</button>
+            <button onclick="selectGroup('O')">O Vowels</button>
+        </div>
+        <div id="practice-area">
+            <p id="khmer-letter"></p>
+            <input type="text" id="user-input" placeholder="Type the transliteration">
+            <button onclick="checkAnswer()">Check</button>
+        </div>
+        <p id="result"></p>
+        <p id="score">Score: <span id="correct">0</span> / <span id="total">0</span></p>
+    </div>
+
+    <script>
+        let vowels;
+        let currentVowel;
+        let score = 0;
+        let total = 0;
+
+        fetch('khmer-vowel-list.JSON')
+            .then(response => response.json())
+            .then(data => {
+                vowels = data;
+            });
+
+        function selectGroup(group) {
+            const filteredVowels = vowels.filter(vowel => vowel.group === group);
+            currentVowel = filteredVowels[Math.floor(Math.random() * filteredVowels.length)];
+            document.getElementById('khmer-letter').textContent = currentVowel.khmer;
+            document.getElementById('user-input').value = '';
+            document.getElementById('result').textContent = '';
+        }
+
+        function checkAnswer() {
+            const userInput = document.getElementById('user-input').value.trim().toLowerCase();
+            const correctAnswer = currentVowel.latin.toLowerCase();
+
+            total++;
+            if (userInput === correctAnswer) {
+                score++;
+                document.getElementById('result').textContent = 'Correct!';
+            } else {
+                document.getElementById('result').textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
+            }
+
+            document.getElementById('correct').textContent = score;
+            document.getElementById('total').textContent = total;
+
+            // Select a new vowel after checking the answer
+            selectGroup(currentVowel.group);
+        }
+    </script>
+</body>
+</html>

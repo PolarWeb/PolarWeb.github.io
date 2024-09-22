@@ -1,0 +1,243 @@
+[
+    {
+      "khmer": "ា",
+      "phonetic": "a",
+      "group": "A"
+    },
+    {
+      "khmer": "ិ",
+      "phonetic": "e",
+      "group": "A"
+    },
+    {
+      "khmer": "ី",
+      "phonetic": "ei",
+      "group": "A"
+    },
+    {
+      "khmer": "ឹ",
+      "phonetic": "oe",
+      "group": "A"
+    },
+    {
+      "khmer": "ឺ",
+      "phonetic": "eu",
+      "group": "A"
+    },
+    {
+      "khmer": "ុ",
+      "phonetic": "o",
+      "group": "A"
+    },
+    {
+      "khmer": "ូ",
+      "phonetic": "ou",
+      "group": "A"
+    },
+    {
+      "khmer": "ួ",
+      "phonetic": "uŏ",
+      "group": "A"
+    },
+    {
+      "khmer": "ើ",
+      "phonetic": "aeu",
+      "group": "A"
+    },
+    {
+      "khmer": "ឿ",
+      "phonetic": "œă",
+      "group": "A"
+    },
+    {
+      "khmer": "ៀ",
+      "phonetic": "iĕ",
+      "group": "A"
+    },
+    {
+      "khmer": "េ",
+      "phonetic": "e",
+      "group": "A"
+    },
+    {
+      "khmer": "ែ",
+      "phonetic": "ae",
+      "group": "A"
+    },
+    {
+      "khmer": "ៃ",
+      "phonetic": "ai",
+      "group": "A"
+    },
+    {
+      "khmer": "ោ",
+      "phonetic": "ao",
+      "group": "A"
+    },
+    {
+      "khmer": "ៅ",
+      "phonetic": "au",
+      "group": "A"
+    },
+    {
+      "khmer": "អុំ",
+      "phonetic": "om",
+      "group": "A"
+    },
+    {
+      "khmer": "អំ",
+      "phonetic": "am",
+      "group": "A"
+    },
+    {
+      "khmer": "អាំ",
+      "phonetic": "am",
+      "group": "A"
+    },
+    {
+      "khmer": "អះ",
+      "phonetic": "ah",
+      "group": "A"
+    },
+    {
+      "khmer": "អិះ",
+      "phonetic": "eh",
+      "group": "A"
+    },
+    {
+      "khmer": "អុះ",
+      "phonetic": "oh",
+      "group": "A"
+    },
+    {
+      "khmer": "អេះ",
+      "phonetic": "eh",
+      "group": "A"
+    },
+    {
+      "khmer": "អោះ",
+      "phonetic": "aoh",
+      "group": "A"
+    },
+    {
+      "khmer": "ា",
+      "phonetic": "ea",
+      "group": "O"
+    },
+    {
+      "khmer": "ិ",
+      "phonetic": "i",
+      "group": "O"
+    },
+    {
+      "khmer": "ី",
+      "phonetic": "i",
+      "group": "O"
+    },
+    {
+      "khmer": "ឹ",
+      "phonetic": "ue",
+      "group": "O"
+    },
+    {
+      "khmer": "ឺ",
+      "phonetic": "ueu",
+      "group": "O"
+    },
+    {
+      "khmer": "ុ",
+      "phonetic": "u",
+      "group": "O"
+    },
+    {
+      "khmer": "ូ",
+      "phonetic": "u",
+      "group": "O"
+    },
+    {
+      "khmer": "ួ",
+      "phonetic": "ua",
+      "group": "O"
+    },
+    {
+      "khmer": "ើ",
+      "phonetic": "eu",
+      "group": "O"
+    },
+    {
+      "khmer": "ឿ",
+      "phonetic": "ẏa",
+      "group": "O"
+    },
+    {
+      "khmer": "ៀ",
+      "phonetic": "ia",
+      "group": "O"
+    },
+    {
+      "khmer": "េ",
+      "phonetic": "é",
+      "group": "O"
+    },
+    {
+      "khmer": "ែ",
+      "phonetic": "eae",
+      "group": "O"
+    },
+    {
+      "khmer": "ៃ",
+      "phonetic": "ey",
+      "group": "O"
+    },
+    {
+      "khmer": "ោ",
+      "phonetic": "ou",
+      "group": "O"
+    },
+    {
+      "khmer": "ៅ",
+      "phonetic": "ov",
+      "group": "O"
+    },
+    {
+      "khmer": "អុំ",
+      "phonetic": "um",
+      "group": "O"
+    },
+    {
+      "khmer": "អំ",
+      "phonetic": "um",
+      "group": "O"
+    },
+    {
+      "khmer": "អាំ",
+      "phonetic": "oam",
+      "group": "O"
+    },
+    {
+      "khmer": "អះ",
+      "phonetic": "eah",
+      "group": "O"
+    },
+    {
+      "khmer": "អិះ",
+      "phonetic": "is",
+      "group": "O"
+    },
+    {
+      "khmer": "អុះ",
+      "phonetic": "uh",
+      "group": "O"
+    },
+    {
+      "khmer": "អេះ",
+      "phonetic": "éh",
+      "group": "O"
+    },
+    {
+      "khmer": "អោះ",
+      "phonetic": "uoh",
+      "group": "O"
+    }
+  ]
+  
