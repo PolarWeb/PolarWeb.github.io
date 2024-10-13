@@ -1,0 +1,122 @@
+[
+  {
+    "english": "How are you?",
+    "short_version": "How you?",
+    "khmer": "តើអ្នកសុខសប្បាយទេ?",
+    "phonetic": "tae anak sokh sabbay te?"
+  },
+  {
+    "english": "Where are you going?",
+    "short_version": "Where you go?",
+    "khmer": "តើអ្នកកំពុងទៅណា?",
+    "phonetic": "tae anak kompong tow na?"
+  },
+  {
+    "english": "What time is it?",
+    "short_version": "Time?",
+    "khmer": "ម៉ោងប៉ុន្មានហើយ?",
+    "phonetic": "maong ponman haey?"
+  },
+  {
+    "english": "Do you need help?",
+    "short_version": "Need help?",
+    "khmer": "តើអ្នកត្រូវការជំនួយទេ?",
+    "phonetic": "tae anak trevkar chumnuoy te?"
+  },
+  {
+    "english": "Are you coming?",
+    "short_version": "You coming?",
+    "khmer": "តើអ្នកមកទេ?",
+    "phonetic": "tae anak mok te?"
+  },
+  {
+    "english": "Can you give me a hand?",
+    "short_version": "Help me?",
+    "khmer": "តើអ្នកអាចជួយខ្ញុំបានទេ?",
+    "phonetic": "tae anak ach chuoy khnhom ban te?"
+  },
+  {
+    "english": "Do you understand?",
+    "short_version": "You get it?",
+    "khmer": "តើអ្នកយល់ទេ?",
+    "phonetic": "tae anak yol te?"
+  },
+  {
+    "english": "Where did you buy that?",
+    "short_version": "Buy where?",
+    "khmer": "តើអ្នកបានទិញវាពីណា?",
+    "phonetic": "tae anak ban tenh vea pi na?"
+  },
+  {
+    "english": "Do you want something to eat?",
+    "short_version": "Want eat?",
+    "khmer": "តើអ្នកចង់ញុំាអ្វីទេ?",
+    "phonetic": "tae anak chong nhom avey te?"
+  },
+  {
+    "english": "Are you ready?",
+    "short_version": "Ready?",
+    "khmer": "តើអ្នករួចរាល់ហើយឬនៅ?",
+    "phonetic": "tae anak ruoch reall haey ror nov?"
+  },
+  {
+    "english": "Where is the bathroom?",
+    "short_version": "Bathroom where?",
+    "khmer": "បង្គន់នៅឯណា?",
+    "phonetic": "bongkon nov ae na?"
+  },
+  {
+    "english": "Are you done?",
+    "short_version": "Done?",
+    "khmer": "តើអ្នកបានបញ្ចប់ហើយ?",
+    "phonetic": "tae anak ban banhchob haey?"
+  },
+  {
+    "english": "Can you speak English?",
+    "short_version": "Speak English?",
+    "khmer": "តើអ្នកអាចនិយាយភាសាអង់គ្លេសទេ?",
+    "phonetic": "tae anak ach niyeay phea sa angkles te?"
+  },
+  {
+    "english": "Is this your first time here?",
+    "short_version": "First time?",
+    "khmer": "តើនេះជាលើកដំបូងរបស់អ្នកឬ?",
+    "phonetic": "tae nih chea leuk dambong robos anak rue?"
+  },
+  {
+    "english": "Do you have any money?",
+    "short_version": "Got money?",
+    "khmer": "តើអ្នកមានលុយទេ?",
+    "phonetic": "tae anak mean luy te?"
+  },
+  {
+    "english": "What is your name?",
+    "short_version": "Your name?",
+    "khmer": "តើអ្នកឈ្មោះអ្វី?",
+    "phonetic": "tae anak chhmoh avey?"
+  },
+  {
+    "english": "Are you busy?",
+    "short_version": "Busy?",
+    "khmer": "តើអ្នករវល់ទេ?",
+    "phonetic": "tae anak rowol te?"
+  },
+  {
+    "english": "What do you think?",
+    "short_version": "Think?",
+    "khmer": "តើអ្នកគិតដូចម្តេច?",
+    "phonetic": "tae anak ket doch mdaych?"
+  },
+  {
+    "english": "Can you wait a moment?",
+    "short_version": "Wait?",
+    "khmer": "តើអ្នកអាចរង់ចាំបន្តិចបានទេ?",
+    "phonetic": "tae anak ach rongcham bontich ban te?"
+  },
+  {
+    "english": "Do you live here?",
+    "short_version": "Live here?",
+    "khmer": "តើអ្នករស់នៅទីនេះឬ?",
+    "phonetic": "tae anak ros nov ti nih rue?"
+  }
+]
