@@ -1,0 +1,147 @@
+[
+  {
+    "english": "left",
+    "khmer": "ឆ្វេង",
+    "phonetic": "chhveng"
+  },
+  {
+    "english": "right",
+    "khmer": "ស្ដាំ",
+    "phonetic": "sdam"
+  },
+  {
+    "english": "straight",
+    "khmer": "ត្រង់",
+    "phonetic": "trong"
+  },
+  {
+    "english": "turn",
+    "khmer": "បត់",
+    "phonetic": "bot"
+  },
+  {
+    "english": "stop",
+    "khmer": "ឈប់",
+    "phonetic": "chhob"
+  },
+  {
+    "english": "go",
+    "khmer": "ទៅ",
+    "phonetic": "tow"
+  },
+  {
+    "english": "intersection",
+    "khmer": "ផ្លូវបែក",
+    "phonetic": "plov baek"
+  },
+  {
+    "english": "traffic light",
+    "khmer": "សញ្ញាចរាចរណ៍",
+    "phonetic": "sanhya chorachor"
+  },
+  {
+    "english": "roundabout",
+    "khmer": "វង់មូល",
+    "phonetic": "vong moul"
+  },
+  {
+    "english": "bridge",
+    "khmer": "ស្ពាន",
+    "phonetic": "spean"
+  },
+  {
+    "english": "road",
+    "khmer": "ផ្លូវ",
+    "phonetic": "plov"
+  },
+  {
+    "english": "highway",
+    "khmer": "ផ្លូវជាតិ",
+    "phonetic": "plov cheat"
+  },
+  {
+    "english": "motorbike",
+    "khmer": "ម៉ូតូ",
+    "phonetic": "moto"
+  },
+  {
+    "english": "car",
+    "khmer": "ឡាន",
+    "phonetic": "lan"
+  },
+  {
+    "english": "tuk-tuk",
+    "khmer": "ទុកទុក",
+    "phonetic": "tuk tuk"
+  },
+  {
+    "english": "bus",
+    "khmer": "ឡានក្រុង",
+    "phonetic": "lan krong"
+  },
+  {
+    "english": "train",
+    "khmer": "រថភ្លើង",
+    "phonetic": "rot pleung"
+  },
+  {
+    "english": "How much to get to...?",
+    "khmer": "តើមានតម្លៃប៉ុន្មានដើម្បីទៅ...?",
+    "phonetic": "tae mean domlai ponman derbei tow...?"
+  },
+  {
+    "english": "Please take me to...",
+    "khmer": "សូមយកខ្ញុំទៅ...",
+    "phonetic": "som yok knhom tow..."
+  },
+  {
+    "english": "Where is this location?",
+    "khmer": "តើទីតាំងនេះស្ថិតនៅឯណា?",
+    "phonetic": "tae ti tang nih sthet nov aena?"
+  },
+  {
+    "english": "Can you drive faster?",
+    "khmer": "តើអ្នកអាចបើកឥតលឿនបន្តិចទៀតបានទេ?",
+    "phonetic": "tae anak ach berk itleun bontich teat ban te?"
+  },
+  {
+    "english": "How long will it take?",
+    "khmer": "តើវានឹងចំណាយពេលប៉ុន្មាន?",
+    "phonetic": "tae vea neng chomnay pel ponman?"
+  },
+  {
+    "english": "Is it far from here?",
+    "khmer": "តើវាឆ្ងាយពីទីនេះទេ?",
+    "phonetic": "tae vea chhngay pi ti nih te?"
+  },
+  {
+    "english": "near",
+    "khmer": "ជិត",
+    "phonetic": "chet"
+  },
+  {
+    "english": "far",
+    "khmer": "ឆ្ងាយ",
+    "phonetic": "chhngay"
+  },
+  {
+    "english": "petrol station",
+    "khmer": "ស្ថានីយ៍ប្រេងឥន្ធនៈ",
+    "phonetic": "sthanai preang ethananah"
+  },
+  {
+    "english": "hotel",
+    "khmer": "សណ្ឋាគារ",
+    "phonetic": "sontakiar"
+  },
+  {
+    "english": "airport",
+    "khmer": "ព្រលានយន្តហោះ",
+    "phonetic": "prolean yon haoh"
+  },
+  {
+    "english": "Are we almost there?",
+    "khmer": "តើយើងជិតដល់នៅឡើយ?",
+    "phonetic": "tae yerng chet dol nov laey?"
+  }
+]

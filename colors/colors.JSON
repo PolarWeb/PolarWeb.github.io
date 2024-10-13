@@ -1,0 +1,67 @@
+[
+  {
+    "english": "red",
+    "khmer": "ក្រហម",
+    "phonetic": "krahom"
+  },
+  {
+    "english": "blue",
+    "khmer": "ខៀវ",
+    "phonetic": "kheav"
+  },
+  {
+    "english": "green",
+    "khmer": "បៃតង",
+    "phonetic": "baitong"
+  },
+  {
+    "english": "yellow",
+    "khmer": "លឿង",
+    "phonetic": "lueung"
+  },
+  {
+    "english": "black",
+    "khmer": "ខ្មៅ",
+    "phonetic": "khmao"
+  },
+  {
+    "english": "white",
+    "khmer": "ស",
+    "phonetic": "sa"
+  },
+  {
+    "english": "pink",
+    "khmer": "ផ្កាឈូក",
+    "phonetic": "pka chhouk"
+  },
+  {
+    "english": "orange",
+    "khmer": "ទឹកក្រូច",
+    "phonetic": "tuk kroch"
+  },
+  {
+    "english": "purple",
+    "khmer": "ស្វាយ",
+    "phonetic": "svay"
+  },
+  {
+    "english": "brown",
+    "khmer": "ត្នោត",
+    "phonetic": "tnot"
+  },
+  {
+    "english": "gray",
+    "khmer": "ប្រផេះ",
+    "phonetic": "proheh"
+  },
+  {
+    "english": "gold",
+    "khmer": "មាស",
+    "phonetic": "meas"
+  },
+  {
+    "english": "silver",
+    "khmer": "ប្រាក់",
+    "phonetic": "prek"
+  }
+]

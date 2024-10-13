@@ -1,0 +1,214 @@
+[
+    {
+      "english": "apple",
+      "khmer": "ផ្លែប៉ោម",
+      "phonetic": "plae paom"
+    },
+    {
+      "english": "banana",
+      "khmer": "ចេក",
+      "phonetic": "chek"
+    },
+    {
+      "english": "orange",
+      "khmer": "ក្រូច",
+      "phonetic": "krouch"
+    },
+    {
+      "english": "pineapple",
+      "khmer": "ម្នាស់",
+      "phonetic": "mnous"
+    },
+    {
+      "english": "mango",
+      "khmer": "ស្វាយ",
+      "phonetic": "svai"
+    },
+    {
+      "english": "watermelon",
+      "khmer": "ឪឡឹក",
+      "phonetic": "ao leukk"
+    },
+    {
+      "english": "tomato",
+      "khmer": "ប៉េងប៉ោះ",
+      "phonetic": "peng poh"
+    },
+    {
+      "english": "cucumber",
+      "khmer": "ត្រសក់",
+      "phonetic": "trawsork"
+    },
+    {
+      "english": "carrot",
+      "khmer": "ការិត",
+      "phonetic": "karit"
+    },
+    {
+      "english": "potato",
+      "khmer": "ដំឡូងបារាំង",
+      "phonetic": "domloeng barang"
+    },
+    {
+      "english": "onion",
+      "khmer": "ខ្ទឹម",
+      "phonetic": "khteum"
+    },
+    {
+      "english": "garlic",
+      "khmer": "ខ្ទឹមស",
+      "phonetic": "khteum sa"
+    },
+    {
+      "english": "lettuce",
+      "khmer": "សាឡាត់",
+      "phonetic": "salat"
+    },
+    {
+      "english": "How much does it cost?",
+      "khmer": "តើវាធ្វើតម្លៃប៉ុន្មាន?",
+      "phonetic": "tae vea tver domlai ponman?"
+    },
+    {
+      "english": "Is it expensive?",
+      "khmer": "តើវាថ្លៃទេ?",
+      "phonetic": "tae vea tlai te?"
+    },
+    {
+      "english": "one kilogram",
+      "khmer": "មួយគីឡូ",
+      "phonetic": "muoy kilo"
+    },
+    {
+      "english": "half a kilogram",
+      "khmer": "ពាក់កណ្ដាលគីឡូ",
+      "phonetic": "peakkandal kilo"
+    },
+    {
+      "english": "I want to buy this.",
+      "khmer": "ខ្ញុំចង់ទិញអ៊ីនឺង",
+      "phonetic": "knhom jong tinh ineng"
+    },
+    {
+      "english": "Do you have change?",
+      "khmer": "តើមានលុយអាប់ទេ?",
+      "phonetic": "tae mean loi ab te?"
+    },
+    {
+      "english": "Can you lower the price?",
+      "khmer": "តើអ្នកអាចបញ្ចុះតម្លៃបានទេ?",
+      "phonetic": "tae anak ach banhchoh domlai ban te?"
+    },
+    {
+      "english": "too expensive",
+      "khmer": "ថ្លៃពេក",
+      "phonetic": "tlai pek"
+    },
+    {
+      "english": "cheap",
+      "khmer": "ថោក",
+      "phonetic": "taok"
+    },
+    {
+        "english": "rice",
+        "khmer": "បាយ",
+        "phonetic": "bai"
+    },
+    {
+        "english": "fish",
+        "khmer": "ត្រី",
+        "phonetic": "trey"
+    },
+    {
+        "english": "chicken",
+        "khmer": "សាច់មាន់",
+        "phonetic": "sach moan"
+    },
+    {
+        "english": "pork",
+        "khmer": "សាច់ជ្រូក",
+        "phonetic": "sach chruk"
+    },
+    {
+        "english": "beef",
+        "khmer": "សាច់គោ",
+        "phonetic": "sach go"
+    },
+    {
+        "english": "egg",
+        "khmer": "ស៊ុត",
+        "phonetic": "sut"
+    },
+    {
+        "english": "milk",
+        "khmer": "ទឹកដោះគោ",
+        "phonetic": "tuek doh go"
+    },
+    {
+        "english": "bread",
+        "khmer": "នំបុ័ង",
+        "phonetic": "nom pong"
+    },
+    {
+        "english": "sugar",
+        "khmer": "ស្ករ",
+        "phonetic": "skaor"
+    },
+    {
+        "english": "salt",
+        "khmer": "អំបិល",
+        "phonetic": "ambel"
+    },
+    {
+        "english": "pepper",
+        "khmer": "ម្រេច",
+        "phonetic": "mrech"
+    },
+    {
+        "english": "soy sauce",
+        "khmer": "ទឹកស៊ីអ៊ីវ",
+        "phonetic": "tuek si ew"
+    },
+    {
+        "english": "tofu",
+        "khmer": "តៅហ៊ូ",
+        "phonetic": "taw hu"
+    },
+    {
+        "english": "coconut",
+        "khmer": "ដូង",
+        "phonetic": "doung"
+    },
+    {
+        "english": "lime",
+        "khmer": "ក្រូចឆ្មារ",
+        "phonetic": "krouch chhmar"
+    },
+    {
+        "english": "ginger",
+        "khmer": "ខ្ញី",
+        "phonetic": "khnei"
+    },
+    {
+        "english": "lemongrass",
+        "khmer": "ស្លឹកគ្រៃ",
+        "phonetic": "sleuk krei"
+    },
+    {
+        "english": "shrimp",
+        "khmer": "បង្គា",
+        "phonetic": "bongkea"
+    },
+    {
+        "english": "soup",
+        "khmer": "សម្ល",
+        "phonetic": "somlor"
+    },
+    {
+        "english": "to eat",
+        "khmer": "ញ៉ាំ",
+        "phonetic": "nham"
+    }
+    ]
+      
+  

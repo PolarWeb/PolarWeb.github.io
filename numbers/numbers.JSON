@@ -1,0 +1,167 @@
+[
+  {
+    "english": "one",
+    "khmer": "មួយ",
+    "phonetic": "muoy"
+  },
+  {
+    "english": "two",
+    "khmer": "ពីរ",
+    "phonetic": "pi"
+  },
+  {
+    "english": "three",
+    "khmer": "បី",
+    "phonetic": "bei"
+  },
+  {
+    "english": "four",
+    "khmer": "បួន",
+    "phonetic": "buon"
+  },
+  {
+    "english": "five",
+    "khmer": "ប្រាំ",
+    "phonetic": "pram"
+  },
+  {
+    "english": "six",
+    "khmer": "ប្រាំមួយ",
+    "phonetic": "pram muoy"
+  },
+  {
+    "english": "seven",
+    "khmer": "ប្រាំពីរ",
+    "phonetic": "pram pi"
+  },
+  {
+    "english": "eight",
+    "khmer": "ប្រាំបី",
+    "phonetic": "pram bei"
+  },
+  {
+    "english": "nine",
+    "khmer": "ប្រាំបួន",
+    "phonetic": "pram buon"
+  },
+  {
+    "english": "ten",
+    "khmer": "ដប់",
+    "phonetic": "dop"
+  },
+  {
+    "english": "eleven",
+    "khmer": "ដប់មួយ",
+    "phonetic": "dop muoy"
+  },
+  {
+    "english": "twelve",
+    "khmer": "ដប់ពីរ",
+    "phonetic": "dop pi"
+  },
+  {
+    "english": "thirteen",
+    "khmer": "ដប់បី",
+    "phonetic": "dop bei"
+  },
+  {
+    "english": "fourteen",
+    "khmer": "ដប់បួន",
+    "phonetic": "dop buon"
+  },
+  {
+    "english": "fifteen",
+    "khmer": "ដប់ប្រាំ",
+    "phonetic": "dop pram"
+  },
+  {
+    "english": "sixteen",
+    "khmer": "ដប់ប្រាំមួយ",
+    "phonetic": "dop pram muoy"
+  },
+  {
+    "english": "seventeen",
+    "khmer": "ដប់ប្រាំពីរ",
+    "phonetic": "dop pram pi"
+  },
+  {
+    "english": "eighteen",
+    "khmer": "ដប់ប្រាំបី",
+    "phonetic": "dop pram bei"
+  },
+  {
+    "english": "nineteen",
+    "khmer": "ដប់ប្រាំបួន",
+    "phonetic": "dop pram buon"
+  },
+  {
+    "english": "twenty",
+    "khmer": "ម្ភៃ",
+    "phonetic": "m'phai"
+  },
+  {
+    "english": "thirty",
+    "khmer": "សាមសិប",
+    "phonetic": "samseb"
+  },
+  {
+    "english": "forty",
+    "khmer": "សែសិប",
+    "phonetic": "saeseb"
+  },
+  {
+    "english": "fifty",
+    "khmer": "ហាសិប",
+    "phonetic": "haseb"
+  },
+  {
+    "english": "sixty",
+    "khmer": "ហុកសិប",
+    "phonetic": "hokseb"
+  },
+  {
+    "english": "seventy",
+    "khmer": "ចិតសិប",
+    "phonetic": "chetseb"
+  },
+  {
+    "english": "eighty",
+    "khmer": "ប៉ែតសិប",
+    "phonetic": "paetseb"
+  },
+  {
+    "english": "ninety",
+    "khmer": "កៅសិប",
+    "phonetic": "kaoseb"
+  },
+  {
+    "english": "one hundred",
+    "khmer": "មួយរយ",
+    "phonetic": "muoy roy"
+  },
+  {
+    "english": "two hundred",
+    "khmer": "ពីររយ",
+    "phonetic": "pi roy"
+  },
+  {
+    "english": "one thousand",
+    "khmer": "មួយពាន់",
+    "phonetic": "muoy poan"
+  },
+  {
+    "english": "ten thousand",
+    "khmer": "មួយម៉ឺន",
+    "phonetic": "muoy meun"
+  },
+  {
+    "english": "twenty thousand",
+    "khmer": "ពីរម៉ឺន",
+    "phonetic": "pii meun"
+  },
+  {
+    "english": "one million",
+    "khmer": "មួយលាន",
+    "phonetic": "muoy lean"
+  }
+]
