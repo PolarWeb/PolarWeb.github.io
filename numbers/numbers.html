@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khmer Vowels Practice</title>
+    <title>Khmer Letter Game</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
+<style>
+    .khmer-letter {
+        font-size: 48px;
+    }
+    .option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    font-size: 24px; /* Adjust font size as needed */
+    width: 140px;
+    height: 140px;
+    }
+</style>
 <body>
     <div class="top-bar">
         <button class="reset-button" onclick="resetGame()">Reset</button>
@@ -18,17 +34,9 @@
     </div>
     <div class="group-selection" id="groupSelection">
         <h2>Select Groups</h2>
-        <div>
-            <label><input type="checkbox" id="groupA" checked> Group 1</label>
-            <span class="group-info" onclick="showGroupInfo('A')">?</span>
-        </div>
-        <div>
-            <label><input type="checkbox" id="groupO" checked> Group 2</label>
-            <span class="group-info" onclick="showGroupInfo('O')">?</span>
-        </div>
         <button class="start-button" onclick="startGame()">Start Game</button>
     </div>
-    <div id="popup" class="popup hidden">
+    <div id="popup" class="popup">
         <span class="close-popup" onclick="closePopup()">&times;</span>
         <div id="popupContent" class="popup-content"></div>
     </div>
@@ -43,11 +51,10 @@
         <div class="result" id="result"></div>
     </div>
 
-
     <script>
-        let vowels = [];
-        let selectedVowels = [];
-        let currentVowel;
+        let adjectives = [];
+        let selectedAdjectives = [];
+        let currentAdjective;
         let correct = 0;
         let incorrect = 0;
         let remaining;
@@ -57,69 +64,78 @@
         fetch('./numbers.JSON')
             .then(response => response.json())
             .then(data => {
-                vowels = data;
+                adjectives = data;
             })
             .catch(error => {
                 console.error('Error loading JSON:', error);
-                alert('Failed to load vowel data. Please try refreshing the page.');
+                alert('Failed to load adjective data. Please try refreshing the page.');
             });
 
         function startGame() {
-            console.log('Starting game...');
-            const groupA = document.getElementById('groupA').checked;
-            const groupO = document.getElementById('groupO').checked;
-
-            if (!groupA && !groupO) {
-                alert('Please select at least one group');
-                return;
-            }
-
-            currentVowels = vowels.filter(vowel => 
-                (groupA && vowel.group === 'A') || (groupO && vowel.group === 'O')
-            );
-            console.log('Filtered vowels:', currentVowels);
-
-            remaining = currentVowels.length;
-            updateTracker();
-
-            document.querySelector('.group-selection').classList.add('hidden');
-            document.querySelector('.container').classList.remove('hidden');
-            document.querySelector('.tracker').classList.remove('hidden');
+            selectedAdjectives = [...adjectives]; // Use all adjectives
+            remaining = selectedAdjectives.length;
+            document.getElementById('groupSelection').classList.add('hidden');
+            document.getElementById('gameContainer').classList.remove('hidden');
             document.querySelector('.reset-button').classList.remove('hidden');
-
-            nextVowel();
+            updateTracker();
+            newRound();
         }
 
-        function nextVowel() {
-            if (currentVowels.length === 0) {
-                endGame();
+        function resetGame() {
+            document.getElementById('groupSelection').classList.remove('hidden');
+            document.getElementById('gameContainer').classList.add('hidden');
+            document.querySelector('.reset-button').classList.add('hidden');
+            correct = 0;
+            incorrect = 0;
+            remaining = 0;
+            updateTracker();
+        }
+
+        function updateTracker() {
+            const trackerElement = document.getElementById('tracker');
+            trackerElement.innerHTML = `
+                <span class="correct">${correct}</span>
+                <span class="incorrect">${incorrect}</span>
+                <span class="remaining">${remaining}</span>
+            `;
+        }
+
+        function newRound() {
+            if (remaining === 0) {
+                alert("Game Over! You've seen all the adjectives.");
+                resetGame();
                 return;
             }
 
-            const index = Math.floor(Math.random() * currentVowels.length);
-            currentVowel = currentVowels[index];
-            currentVowels.splice(index, 1);
+            const index = Math.floor(Math.random() * selectedAdjectives.length);
+            currentAdjective = selectedAdjectives[index];
+            selectedAdjectives.splice(index, 1);
+            remaining--;
 
-            document.getElementById('khmerLetter').textContent = currentVowel.khmer; // Corrected ID
-            document.getElementById('result').style.display = 'none';
+            document.getElementById('khmerLetter').textContent = currentAdjective.english;
 
-            options = [currentVowel.phonetic];
+            // Create an array of options with both phonetic and Khmer
+            const options = [{ phonetic: currentAdjective.phonetic, khmer: currentAdjective.khmer }];
             while (options.length < 4) {
-                const randomVowel = vowels[Math.floor(Math.random() * vowels.length)];
-                if (!options.includes(randomVowel.phonetic)) {
-                    options.push(randomVowel.phonetic);
+                const randomAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+                if (!options.some(option => option.phonetic === randomAdjective.phonetic)) {
+                    options.push({ phonetic: randomAdjective.phonetic, khmer: randomAdjective.khmer });
                 }
             }
-            options = options.sort(() => Math.random() - 0.5);
 
-            const optionButtons = document.querySelectorAll('.option');
-            optionButtons.forEach((button, index) => {
-                button.textContent = options[index];
+            options.sort(() => Math.random() - 0.5);
+
+            const buttons = document.querySelectorAll('.option');
+            buttons.forEach((button, index) => {
+                button.innerHTML = `
+                    <div>${options[index].phonetic}</div>
+                    <div>${options[index].khmer}</div>
+                `;
                 button.disabled = false;
                 button.classList.remove('correct');
             });
 
-            isWaitingForNextRound = false;
+            updateTracker();
         }
 
         function checkAnswer(button) {
@@ -127,88 +143,51 @@
 
             const resultElement = document.getElementById('result');
             const buttons = document.querySelectorAll('.option');
-            
+
             isWaitingForNextRound = true;
-            
-            if (button.textContent === currentVowel.phonetic) {
+
+            // Get the phonetic value from the button's inner HTML
+            const selectedPhonetic = button.querySelector('div').textContent;
+
+            if (selectedPhonetic === currentAdjective.phonetic) {
                 resultElement.innerHTML = '✓';
-                resultElement.style.color = '#4CAF50';
                 correct++;
                 button.classList.add('correct');
             } else {
                 resultElement.innerHTML = '✗';
-                resultElement.style.color = '#C80036';
                 incorrect++;
                 buttons.forEach(btn => {
-                    if (btn.textContent === currentVowel.phonetic) {
+                    const btnPhonetic = btn.querySelector('div').textContent;
+                    if (btnPhonetic === currentAdjective.phonetic) {
                         btn.classList.add('correct');
                     }
                 });
             }
             resultElement.style.display = 'block';
-            remaining--;
             updateTracker();
-            
+
             buttons.forEach(btn => btn.disabled = true);
 
-            setTimeout(() => {
-                isWaitingForNextRound = false;
-                nextVowel();
-            }, 1500);
+            setTimeout(prepareNextRound, 1500);
         }
 
-        function updateTracker() {
-            document.querySelector('.correct').textContent = correct;
-            document.querySelector('.incorrect').textContent = incorrect;
-            document.querySelector('.remaining').textContent = remaining;
-        }
-
-        function endGame() {
-            const container = document.querySelector('.container');
-            container.innerHTML = `
-                <h2>Game Over</h2>
-                <p>Correct: ${correct}</p>
-                <p>Incorrect: ${incorrect}</p>
-                <button onclick="resetGame()" class="reset-button">Play Again</button>
-            `;
-        }
-
-        function resetGame() {
-            correct = 0;
-            incorrect = 0;
-            document.querySelector('.group-selection').classList.remove('hidden');
-            document.querySelector('.container').classList.add('hidden');
-            document.querySelector('.tracker').classList.add('hidden');
-            document.querySelector('.reset-button').classList.add('hidden');
-        }
-
-        function showGroupInfo(group) {
-            const popup = document.getElementById('popup');
-            const popupContent = document.getElementById('popupContent'); // Corrected ID
-            if (!popup || !popupContent) {
-                console.error('Popup elements not found');
-                return;
-            }
-            const groupVowels = vowels.filter(v => v.group === group);
+        function prepareNextRound() {
+            const resultElement = document.getElementById('result');
+            resultElement.style.display = 'none';
             
-            let content = `<h3>${group} Vowels</h3><ul>`;
-            groupVowels.forEach(vowel => {
-                const phoneticValue = vowel.phonetic || vowel.latin || 'N/A';
-                content += `<li><strong>${vowel.khmer}</strong> - ${phoneticValue}</li>`;
+            const buttons = document.querySelectorAll('.option');
+            buttons.forEach(btn => {
+                btn.classList.remove('correct');
+                btn.disabled = false;
+                btn.blur();
             });
-            content += '</ul>';
-            
-            popupContent.innerHTML = content;
-            popup.classList.remove('hidden');
 
-            // Log the first vowel object for debugging
-            if (groupVowels.length > 0) {
-                console.log('Sample vowel object:', groupVowels[0]);
-            }
+            isWaitingForNextRound = false;
+            newRound();
         }
 
         function closePopup() {
-            document.getElementById('popup').classList.add('hidden');
+            document.getElementById('popup').style.display = 'none';
         }
     </script>
 </body>
