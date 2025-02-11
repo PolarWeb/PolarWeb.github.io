@@ -240,6 +240,24 @@ body {
 .hidden {
     display: none;
 }
+.display-options-button {
+    display: block; /* Make it a block element */
+    width: 200px; /* Set a fixed width */
+    height: 30px; /* Set a fixed height */
+    margin: 40px auto 20px; /* Increase top margin to shift it down */
+    background-color: #FF6969; /* Match the color scheme */
+    color: #FFF5E1; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+    font-size: 18px; /* Font size */
+    text-align: center; /* Center text */
+}
+
+.display-options-button:hover {
+    background-color: #FF4C4C; /* Darker shade on hover */
+}
 @media (hover: none) {
     .option:hover {
         background-color: #FF6969;
@@ -272,4 +290,21 @@ body {
         margin-top: -180px;
     }
 
+}
+.feedback {
+    position: absolute; /* Position it over the game area */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the element */
+    font-size: 48px; /* Size of the icon */
+    display: none; /* Hidden by default */
+}
+
+.feedback.visible {
+    display: block; /* Show when needed */
+}
+
+.icon {
+    display: inline-block; /* Inline block for spacing */
+    margin: 0 10px; /* Space between icons */
 }

@@ -44,6 +44,7 @@
         <div class="khmer-letter-container">
             <div class="khmer-letter" id="khmerLetter"></div>
         </div>
+        <button class="display-options-button" id="displayOptionsButton" onclick="showOptions()">Display Options</button>
         <button class="option" onclick="checkAnswer(this)"></button>
         <button class="option" onclick="checkAnswer(this)"></button>
         <button class="option" onclick="checkAnswer(this)"></button>
@@ -102,7 +103,7 @@
 
         function newRound() {
             if (remaining === 0) {
-                alert("Game Over! You've seen all the adjectives.");
+                alert("Game Over! You've seen all the words.");
                 resetGame();
                 return;
             }
@@ -113,6 +114,25 @@
             remaining--;
 
             document.getElementById('khmerLetter').textContent = currentAdjective.english;
+
+            // Hide the option buttons initially
+            const buttons = document.querySelectorAll('.option');
+            buttons.forEach(button => {
+                button.style.display = 'none'; // Hide option buttons
+                button.disabled = true; // Disable buttons
+            });
+
+            // Show the display options button
+            const displayOptionsButton = document.getElementById('displayOptionsButton');
+            displayOptionsButton.style.display = 'block'; // Show the display options button
+
+            updateTracker();
+        }
+
+        function showOptions() {
+            // Hide the display options button
+            const displayOptionsButton = document.getElementById('displayOptionsButton');
+            displayOptionsButton.style.display = 'none'; // Hide the button
 
             // Create an array of options with both phonetic and Khmer
             const options = [{ phonetic: currentAdjective.phonetic, khmer: currentAdjective.khmer }];
@@ -125,13 +145,15 @@
 
             options.sort(() => Math.random() - 0.5);
 
+            // Show the option buttons
             const buttons = document.querySelectorAll('.option');
             buttons.forEach((button, index) => {
                 button.innerHTML = `
                     <div>${options[index].phonetic}</div>
                     <div>${options[index].khmer}</div>
                 `;
-                button.disabled = false;
+                button.style.display = 'flex'; // Show option buttons
+                button.disabled = false; // Enable buttons
                 button.classList.remove('correct');
             });
 
